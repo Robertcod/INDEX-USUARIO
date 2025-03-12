@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let indiceActual = 1; // Comenzamos con el segundo elemento activo (índice 1)
     const totalElementos = elementosCarrusel.length;
 
-
-
     // Configurar posición inicial
     function inicializarCarrusel() {
         // Calcular el ancho total del carrusel
@@ -78,11 +76,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         actualizarCarrusel();
     }
+    
     // Eventos de click para los botones de navegación
     botonAnterior.addEventListener('click', () => {
         irAlAnterior();
         resetearAutoPlay();
     });
+    
     botonSiguiente.addEventListener('click', () => {
         irAlSiguiente();
         resetearAutoPlay();
@@ -91,18 +91,55 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializar el carrusel
     inicializarCarrusel();
 
-    // Ajustar el carrusel cuando cambia el tamaño de la ventana
-    window.addEventListener('resize', () => {
-        inicializarCarrusel();
+    // Mejorado: Event listener para resize que recalcula todo el carrusel
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        // Usar debounce para evitar recalcular demasiadas veces durante el resize
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Recalcular completamente el carrusel
+            inicializarCarrusel();
+            
+            // Aplicar también los estilos de escala según el viewport
+            if (window.innerWidth >= 1024) {
+                elementosCarrusel.forEach(el => {
+                    el.style.transform = "scale(0.85)";
+                    el.style.opacity = "0.7";
+                });
+        
+                const activo = document.querySelector(".elementoCarrusel.activo");
+                if (activo) {
+                    activo.style.transform = "scale(1.1)";
+                    activo.style.opacity = "1";
+                }
+            } else {
+                // En pantallas más pequeñas, escala reducida
+                elementosCarrusel.forEach(el => {
+                    el.style.transform = "scale(0.95)";
+                    el.style.opacity = "0.7";
+                });
+        
+                const activo = document.querySelector(".elementoCarrusel.activo");
+                if (activo) {
+                    activo.style.transform = "scale(1.05)";
+                    activo.style.opacity = "1";
+                }
+            }
+        }, 250); // Esperar 250ms después de que termine el resize
+    });
+
+    // Event listener para cambio de orientación
+    window.addEventListener('orientationchange', function() {
+        setTimeout(inicializarCarrusel, 100);
     });
 
     // Auto-movimiento cada 3 segundos
     let autoPlay = setInterval(irAlSiguiente, 3000);
 
-function resetearAutoPlay() {
-    clearInterval(autoPlay);
-    autoPlay = setInterval(irAlSiguiente, 3000);
-}
+    function resetearAutoPlay() {
+        clearInterval(autoPlay);
+        autoPlay = setInterval(irAlSiguiente, 3000);
+    }
 
     // También reiniciar auto-movimiento si el usuario desliza en el carrusel
     carrusel.addEventListener('touchstart', resetearAutoPlay);
@@ -140,15 +177,10 @@ function resetearAutoPlay() {
             if (indice !== indiceActual) {
                 indiceActual = indice;
                 actualizarCarrusel();
+                resetearAutoPlay();
             }
         });
     });
-
-
-
-
-
-
 
 
 
