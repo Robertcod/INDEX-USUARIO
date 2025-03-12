@@ -16,7 +16,6 @@
 body {
     overflow-x: hidden;
     display: grid;
-    gap: 2em;
 }
 
 header {
@@ -79,7 +78,6 @@ header {
         display: block;
     }
 
-    /* 📂 Botón de Categorías */
     .botonCategorias {
         background: #a68160;
         color: white;
@@ -91,7 +89,6 @@ header {
         text-align: center;
     }
 
-    /* 📜 Submenú de categorías */
     .submenuCategorias {
         display: none;
         list-style: none;
@@ -102,7 +99,6 @@ header {
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* 🎭 Mostrar submenú cuando pasas el mouse sobre Categorías */
     .botonCategorias:hover+.submenuCategorias {
         display: block;
     }
@@ -130,9 +126,8 @@ header {
         display: flex;
         align-items: center;
         height: 100%;
-
-
-
+        color: var(--color-primary);
+        font-weight: 500;
     }
 }
 
@@ -152,10 +147,11 @@ main {
 .contenedorCarrusel {
     position: relative;
     width: 100%;
-    height: 500px;
-    overflow: visible;
+    height: 600px;
+    overflow: hidden;
 
     .carrusel {
+        padding: 4em 0;
         display: flex;
         position: absolute;
         transform: translateX(-50%);
@@ -683,7 +679,6 @@ footer {
     background-color: var(--color-primary);
     height: 100%;
     margin-top: 5em;
-    max-width: 100vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     color: var(--color-secondary);
@@ -992,155 +987,189 @@ footer {
     }
 
     /*fin botones de el carrusel */
-}
+    
 
-
-
-
-
-
-
-.establecimientosRecomendados {
-    padding: 3em;
-    width: 100%;
-    gap: 2em;
-    display: grid;
-    justify-content: center;
-
-    .tituloSeccion {
-        text-align: center;
-        font-size: 1.7em;
-    }
-
-    .contenedorEstablecimientos {
-        display: flex;
-        flex-direction: column;
-        gap: 3em;
-        align-items: center;
+    .establecimientosRecomendados {
+        padding: 3em;
+        width: 100%;
+        gap: 2em;
+        display: grid;
         justify-content: center;
-
-        .cartaEstablecimiento {
-            width: 100%;
-            border: 2px solid var(--color-primary);
-            border-radius: .8em;
-            overflow: hidden;
+    
+        .tituloSeccion {
+            text-align: center;
+            font-size: 1.7em;
+        }
+    
+        .contenedorEstablecimientos {
             display: flex;
             flex-direction: column;
-            color: var(--color-black);
-            position: relative;
-            justify-content: space-between;
-            height: 100%;
-
-            img {
+            gap: 3em;
+            align-items: center;
+            justify-content: center;
+    
+            .cartaEstablecimiento {
                 width: 100%;
-                height: 14em;
-                object-fit: cover;
-                margin-bottom: -.5em;
-            }
-
-            .contenedorInformacion {
+                border: 2px solid var(--color-primary);
+                border-radius: .8em;
+                overflow: hidden;
                 display: flex;
                 flex-direction: column;
-                flex-grow: 1;
-
-                /* Hace que la información crezca ocupando el espacio disponible */
-                .informacion {
-                    display: grid;
+                color: var(--color-black);
+                position: relative;
+                justify-content: space-between;
+                height: 100%;
+    
+                img {
+                    width: 100%;
+                    height: 14em;
+                    object-fit: cover;
+                    margin-bottom: -.5em;
+                }
+    
+                .contenedorInformacion {
+                    display: flex;
+                    flex-direction: column;
                     flex-grow: 1;
-                    /* Esto empuja el botón hacia abajo */
-
-                    grid-template-columns: 1fr 1fr;
-                    align-items: center;
-                    padding: .8em .8em 0 .8em;
-                    background-color: var(--color-white);
-                    gap: .7em;
-                    border-top: 2px solid var(--color-primary);
-                    border-radius: 1em;
-
-
-                    .nombreDescripcion {
-                        height: 100%;
-                        font-weight: bold;
-                        font-size: 0.9em;
-
-                        h2 {
-                            display: block;
-                            max-width: 100%;
-                            /* Evita que el texto expanda el contenedor */
-                            overflow-wrap: break-word;
-                            /* Permite que las palabras largas se corten */
-                            word-break: break-word;
-                            /* Compatibilidad con navegadores más antiguos */
-                            white-space: normal;
-                            /* Asegura que el texto pueda romperse */
-                        }
-
-                        p {
-                            font-weight: normal;
-                            font-size: 1em;
-
-                        }
-                    }
-
-                    .servicios {
-                        height: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        padding-left: 1em;
-                        border-left: 2px solid #a67c52;
-                        font-size: 1em;
-
-                        ul {
-                            list-style: none;
-                            padding: 0;
-                            margin: 0;
-
-                            li {
+    
+                    /* Hace que la información crezca ocupando el espacio disponible */
+                    .informacion {
+                        display: grid;
+                        flex-grow: 1;
+                        /* Esto empuja el botón hacia abajo */
+    
+                        grid-template-columns: 1fr 1fr;
+                        align-items: center;
+                        padding: .8em .8em 0 .8em;
+                        background-color: var(--color-white);
+                        gap: .7em;
+                        border-top: 2px solid var(--color-primary);
+                        border-radius: 1em;
+    
+    
+                        .nombreDescripcion {
+                            height: 100%;
+                            font-weight: bold;
+                            font-size: 0.9em;
+    
+                            h2 {
+                                display: block;
+                                max-width: 100%;
+                                /* Evita que el texto expanda el contenedor */
+                                overflow-wrap: break-word;
+                                /* Permite que las palabras largas se corten */
+                                word-break: break-word;
+                                /* Compatibilidad con navegadores más antiguos */
+                                white-space: normal;
+                                /* Asegura que el texto pueda romperse */
+                            }
+    
+                            p {
+                                font-weight: normal;
                                 font-size: 1em;
-
-
-
+    
                             }
                         }
-
-                        .puntuacion {
-                            margin-top: auto;
-                            /* Empuja la puntuación al fondo */
-                            font-size: 1.7em;
-                            color: var(--color-primary);
+    
+                        .servicios {
+                            height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            padding-left: 1em;
+                            border-left: 2px solid #a67c52;
+                            font-size: 1em;
+    
+                            ul {
+                                list-style: none;
+                                padding: 0;
+                                margin: 0;
+    
+                                li {
+                                    font-size: 1em;
+    
+    
+    
+                                }
+                            }
+    
+                            .puntuacion {
+                                margin-top: auto;
+                                /* Empuja la puntuación al fondo */
+                                font-size: 1.7em;
+                                color: var(--color-primary);
+                            }
                         }
                     }
-                }
-
-                .contenedorBotonAgendar {
-                    margin-top: auto;
-                    /* Empuja el botón al fondo */
-
-                    text-align: center;
-                    padding: .5em;
-                }
-
-                .botonAgendar {
-                    background-color: #a67c52;
-                    color: white;
-                    padding: 0.2em 1em;
-                    border: none;
-                    border-radius: 5px;
-                    font-size: 1em;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-
-                .botonAgendar:hover {
-                    background-color: #8b5e34;
+    
+                    .contenedorBotonAgendar {
+                        margin-top: auto;
+                        /* Empuja el botón al fondo */
+    
+                        text-align: center;
+                        padding: .5em;
+                    }
+    
+                    .botonAgendar {
+                        background-color: #a67c52;
+                        color: white;
+                        padding: 0.2em 1em;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 1em;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+    
+                    .botonAgendar:hover {
+                        background-color: #8b5e34;
+                    }
                 }
             }
         }
+    
+    
     }
+    
 
 
+    footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+        grid-template-rows: auto auto; /* Dos filas */
+        font-size: .6em;
+        grid-template-areas: 
+            "centro centro" /* El contenedor del medio arriba */
+            "izquierda derecha"; /* Las otras dos en una sola fila */
+        text-align: center;
+        gap: 1em;
+        color: white;
+    }
+    
+    .sobreNosotros {
+        grid-area: izquierda;
+        padding: 0em;
+        
+    }
+    
+    .sta {
+        grid-area: centro;
+        padding: 0em;
+
+    }
+    
+    .atencionCliente {
+        grid-area: derecha;
+        padding: 0em;
+
+    }
 }
+
+
+
+
+
+
 
 
 .establecimientosDestacados {
@@ -1171,23 +1200,3 @@ footer {
     }
 }
 
-footer {
-    .sta {
-        /* dentro del contenedor sta apilaremos su contenido*/
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        padding: 2em;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1em;
-        place-content: center;
-
-        .contenedorLogoFooter {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1em;
-        }
-    }
-}
