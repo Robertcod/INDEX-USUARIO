@@ -30,7 +30,7 @@ header {
     z-index: 22;
 
     .contenedorLogo h2 {
-        font-size: 1.8rem;
+        font-size: clamp(2rem, 4vw, 4rem);
     }
 
     .navegacion {
@@ -131,17 +131,8 @@ header {
     }
 }
 
-
-
-
-
-
-
-
-
 main {
     display: grid;
-    gap: 4em;
 }
 
 .contenedorCarrusel {
@@ -160,7 +151,7 @@ main {
         .elementoCarrusel {
             position: relative;
             width: 40em;
-            height: 30em;
+            height: 28em;
             margin: 0 .9em;
             background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-03-07%20202616-XgCF11xdSnuNYzQRytiXLVDFPwWiwk.png');
             background-size: cover;
@@ -459,7 +450,6 @@ main {
     .contenedorEstablecimientos {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        /* 3 columnas */
         gap: 3em;
         justify-content: center;
 
@@ -486,20 +476,18 @@ main {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
+                padding: .5em .5em 0 .5em;                
+                border-top: 2px solid var(--color-primary);
+                background-color: var(--color-white);
 
                 /* Hace que la información crezca ocupando el espacio disponible */
                 .informacion {
                     display: grid;
                     flex-grow: 1;
-                    /* Esto empuja el botón hacia abajo */
-
                     grid-template-columns: 1fr 1fr;
                     align-items: center;
-                    padding: .8em .8em 0 .8em;
                     background-color: var(--color-white);
-                    gap: .7em;
-                    border-top: 2px solid var(--color-primary);
-                    border-radius: 1em;
+
 
 
                     .nombreDescripcion {
@@ -587,18 +575,19 @@ main {
 }
 
 .establecimientosDestacados {
-    /* Sección de establecimientos recomendados */
-    padding: 0 3em;
+    padding: 5em 3em;
     display: grid;
     justify-content: center;
     align-items: center;
     text-align: center;
     gap: 2em;
 
-    .tituloSeccion {
-        font-size: 1.7em;
 
+    .tituloSeccion {
+        text-align: center;
+        font-size: 1.7em;
     }
+
 
     .contenedorImagenesDestacado {
         /* Contenedor de tarjetas */
@@ -613,15 +602,16 @@ main {
 
     .cardDestacado {
         /* Tarjeta */
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 80% 20%;
         width: 20em;
         height: 300px;
-        border-radius: .7em .7em 0 0;
+        border-radius: .7em;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         position: relative;
         background: white;
-        overflow: hidden;
-        /* Oculta contenido extra */
         border: 2px solid var(--color-primary);
     }
 
@@ -633,7 +623,7 @@ main {
     .cardDestacado img.destacadoImagen {
         /* Imagen dentro de la tarjeta */
         width: 100%;
-        height: 83.4%;
+        height: 100%;
         object-fit: cover;
         /* Ajusta la imagen */
         display: block;
@@ -643,13 +633,14 @@ main {
 
     .nombrePosicion {
         /* Texto dentro de la tarjeta */
-
         background: var(--color-primary);
         display: flex;
         justify-content: center;
         align-items: center;
         padding: .5em 0;
         gap: 0.5em;
+        border-radius:  0 0 .7em .7em;
+
     }
 
     .nombrePosicion h4 {
@@ -682,6 +673,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     color: var(--color-secondary);
+    text-align: center;
 
     a {
         color: var(--color-secondary);
@@ -706,7 +698,8 @@ footer {
         .redes {
             display: flex;
             gap: 1em;
-
+            text-align: center;
+            justify-content: center;
             .icon {
                 font-size: 2em;
             }
@@ -734,7 +727,6 @@ footer {
         display: grid;
         gap: 1em;
         padding: 2em;
-        align-items: center;
         justify-content: center;
 
         .atencionClienteContenido {
@@ -746,15 +738,21 @@ footer {
 /* FIN DE FOOTER*/
 
 
-
-
 @media (max-width: 768px) {
+
+    main {
+        display: grid;
+        gap: 0em;
+    }
 
 
     .contenedorCarrusel {
         .carrusel {
+            padding: 3em 0;
+
             .elementoCarrusel {
                 width: 18em;
+
                 .contenidoElemento {
                     display: grid;
                     grid-template-columns: 1fr;
@@ -775,241 +773,27 @@ footer {
                             width: 8em;
                         }
                     }
-
-                    .informacionEstablecimiento {
-                        .tituloEstablecimiento {
-                            font-size: 1.5em;
-                            margin-bottom: .8em;
-                            text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.5);
-                        }
-
-                        .descripcionEstablecimiento {
-                            font-size: 0.8em;
-                            margin-bottom: .9em;
-                            line-height: 1.4;
-                            display: -webkit-box;
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                        }
-
-                        .boton-agendar {
-                            display: flex;
-                            align-items: center;
-                            background: white;
-                            width: 9em;
-                            height: 45px;
-                            border: none;
-                            border-radius: 50px;
-                            font-size: 20px;
-                            font-weight: bold;
-                            color: #9B7757;
-                            cursor: pointer;
-                            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-                            outline: none;
-                            transition: 0.3s;
-
-                            .icono {
-                                width: 50px;
-                                height: 50px;
-                                background: #9B7757;
-                                border-radius: 50%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                margin-right: 10px;
-
-                                img {
-                                    width: 60%;
-                                    height: 60%;
-                                }
-                            }
-                        }
-                    }
                 }
+
                 .imagenPerfil {
                     height: 8em;
                     width: 8em;
                 }
             }
         }
-
-        /*inicio clases para ejecutar animaciones y cambios en el carrusel */
-        .elementoCarrusel::before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .elementoCarrusel.activo {
-            transform: scale(1.1);
-            opacity: 1;
-            z-index: 10;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .elementoCarrusel.activo .imagenPerfil {
-            height: 10em;
-            width: 10em;
-        }
-
-        .elementoCarrusel.activo .tituloEstablecimiento {
-            font-size: 2rem;
-        }
-
-        .elementoCarrusel.activo .descripcionEstablecimiento {
-            font-size: 0.9rem;
-            line-clamp: 4;
-        }
-
-        /*fin clases para ejecutar animaciones y cambios en el carrusel */
-
-        /*inicio botones de el carrusel */
-        .boton-agendar:hover {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        .botonNavegacion {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: #b78d65;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 20;
-            transition: background-color 0.3s;
-        }
-
-        .botonNavegacion:hover {
-            background-color: #9a7553;
-        }
-
-        .botonAnterior {
-            left: 20px;
-        }
-
-        .botonSiguiente {
-            right: 20px;
-        }
-
-        /*fin botones de el carrusel */
     }
-
-
-
-
-
-
-
-
-
-    /*inicio clases para ejecutar animaciones y cambios en el carrusel */
-    .elementoCarrusel::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1;
-    }
-
-    .elementoCarrusel.activo {
-        transform: scale(1.1);
-        opacity: 1;
-        z-index: 10;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .elementoCarrusel.activo .imagenPerfil {
-        height: 10em;
-        width: 10em;
-    }
-
-    .elementoCarrusel.activo .tituloEstablecimiento {
-        font-size: 2rem;
-    }
-
-    .elementoCarrusel.activo .descripcionEstablecimiento {
-        font-size: 0.9rem;
-        line-clamp: 4;
-    }
-
-    /*fin clases para ejecutar animaciones y cambios en el carrusel */
-
-    /*inicio botones de el carrusel */
-    .boton-agendar:hover {
-        background: var(--color-primary);
-        color: var(--color-white);
-    }
-
-    .botonNavegacion {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 50px;
-        height: 50px;
-        background-color: #b78d65;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        z-index: 20;
-        transition: background-color 0.3s;
-    }
-
-    .botonNavegacion:hover {
-        background-color: #9a7553;
-    }
-
-    .botonAnterior {
-        left: 20px;
-    }
-
-    .botonSiguiente {
-        right: 20px;
-    }
-
-    /*fin botones de el carrusel */
-    
 
     .establecimientosRecomendados {
-        padding: 3em;
-        width: 100%;
-        gap: 2em;
-        display: grid;
-        justify-content: center;
-    
-        .tituloSeccion {
-            text-align: center;
-            font-size: 1.7em;
-        }
-    
+
         .contenedorEstablecimientos {
             display: flex;
             flex-direction: column;
             gap: 3em;
             align-items: center;
             justify-content: center;
-    
+
             .cartaEstablecimiento {
-                width: 100%;
+                max-width: 18em;
                 border: 2px solid var(--color-primary);
                 border-radius: .8em;
                 overflow: hidden;
@@ -1018,40 +802,41 @@ footer {
                 color: var(--color-black);
                 position: relative;
                 justify-content: space-between;
-                height: 100%;
-    
+
                 img {
                     width: 100%;
                     height: 14em;
                     object-fit: cover;
                     margin-bottom: -.5em;
                 }
-    
+
                 .contenedorInformacion {
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
-    
+                    border-top: 2px solid var(--color-primary);
+                    background-color: var(--color-white);
+
+                    border-radius: 1em;
+
                     /* Hace que la información crezca ocupando el espacio disponible */
                     .informacion {
                         display: grid;
                         flex-grow: 1;
                         /* Esto empuja el botón hacia abajo */
-    
+
                         grid-template-columns: 1fr 1fr;
                         align-items: center;
-                        padding: .8em .8em 0 .8em;
                         background-color: var(--color-white);
                         gap: .7em;
-                        border-top: 2px solid var(--color-primary);
-                        border-radius: 1em;
-    
-    
+
+
+
                         .nombreDescripcion {
                             height: 100%;
                             font-weight: bold;
                             font-size: 0.9em;
-    
+
                             h2 {
                                 display: block;
                                 max-width: 100%;
@@ -1063,14 +848,14 @@ footer {
                                 white-space: normal;
                                 /* Asegura que el texto pueda romperse */
                             }
-    
+
                             p {
                                 font-weight: normal;
                                 font-size: 1em;
-    
+
                             }
                         }
-    
+
                         .servicios {
                             height: 100%;
                             display: flex;
@@ -1079,20 +864,20 @@ footer {
                             padding-left: 1em;
                             border-left: 2px solid #a67c52;
                             font-size: 1em;
-    
+
                             ul {
                                 list-style: none;
                                 padding: 0;
                                 margin: 0;
-    
+
                                 li {
                                     font-size: 1em;
-    
-    
-    
+
+
+
                                 }
                             }
-    
+
                             .puntuacion {
                                 margin-top: auto;
                                 /* Empuja la puntuación al fondo */
@@ -1101,15 +886,15 @@ footer {
                             }
                         }
                     }
-    
+
                     .contenedorBotonAgendar {
                         margin-top: auto;
                         /* Empuja el botón al fondo */
-    
+
                         text-align: center;
                         padding: .5em;
                     }
-    
+
                     .botonAgendar {
                         background-color: #a67c52;
                         color: white;
@@ -1120,83 +905,106 @@ footer {
                         font-weight: bold;
                         cursor: pointer;
                     }
-    
+
                     .botonAgendar:hover {
                         background-color: #8b5e34;
                     }
                 }
             }
         }
-    
-    
+
+
     }
-    
+
+
+
+
+    .establecimientosDestacados {
+        gap: 2em;
+        padding: 2em 3em;
+        .tituloSeccion{
+            font-size: 1.7em;
+        }
+        .contenedorImagenesDestacado {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 3em;
+            gap: 2em;
+        }
+
+        .cardDestacado {
+            /* Ocupan todo el ancho disponible */
+            max-width: 18em;
+
+            /* Mantiene tamaño */
+            height: 300px;
+
+        }
+
+        .cardDestacado:nth-child(1) {
+            order: 2;
+            /* El primer hijo pasa a ser el segundo */
+        }
+
+        .cardDestacado:nth-child(2) {
+            transform: translateY(0px);
+            /* Sube la tarjeta del medio */
+            order: 1;
+        }
+
+
+        .cardDestacado:nth-child(3) {
+            order: 3;
+            /* El primer hijo pasa a ser el segundo */
+        }
+
+
+        .cardDestacado:hover {
+            /* Efecto al pasar el mouse */
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+
 
 
     footer {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
-        grid-template-rows: auto auto; /* Dos filas */
+        grid-template-columns: repeat(2, 1fr);
+        /* Dos columnas */
+        grid-template-rows: auto auto;
+        /* Dos filas */
         font-size: .6em;
-        grid-template-areas: 
-            "centro centro" /* El contenedor del medio arriba */
-            "izquierda derecha"; /* Las otras dos en una sola fila */
+        grid-template-areas:
+            "centro centro"
+            "izquierda derecha";
         text-align: center;
         gap: 1em;
         color: white;
-    }
-    
-    .sobreNosotros {
-        grid-area: izquierda;
-        padding: 0em;
-        
-    }
-    
-    .sta {
-        grid-area: centro;
-        padding: 0em;
+padding: 1em 0;
 
-    }
-    
-    .atencionCliente {
-        grid-area: derecha;
-        padding: 0em;
+        .sobreNosotros {
+            grid-area: izquierda;
+            padding: 0em 0em;
+            text-align: center;
 
-    }
-}
+        }
 
+        .sta {
+            grid-area: centro;
+            padding: 0em 0em;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .atencionCliente {
+            grid-area: derecha;
+            padding: 0em 0em;
 
-
-
-
-
-
-.establecimientosDestacados {
-    gap: 2em;
-
-    .contenedorImagenesDestacado {
-        display: flex;
-        flex-direction: column;
-        /* Asegura que los elementos estén en columna */
-        align-items: center;
-        padding-top: 3em;
-        gap: 2em;
-    }
-
-    .cardDestacado {
-        width: 100%;
-        /* Ocupan todo el ancho disponible */
-        max-width: 100%;
-        /* Mantiene tamaño */
-        height: 300px;
-
-    }
-
-    .cardDestacado:hover {
-        /* Efecto al pasar el mouse */
-        transform: scale(1.05) translateY(-5px);
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+        }
     }
 }
-
