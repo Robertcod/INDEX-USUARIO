@@ -1,20 +1,23 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Elementos del DOM
-    const carrusel = document.querySelector('.carrusel');
-    const elementosCarrusel = document.querySelectorAll('.elementoCarrusel');
-    const botonAnterior = document.querySelector('.botonAnterior');
-    const botonSiguiente = document.querySelector('.botonSiguiente');
+document.addEventListener("DOMContentLoaded", function () {
+    const carrusel = document.querySelector(".carrusel");
+    const elementosCarrusel = document.querySelectorAll(".elementoCarrusel");
+    const botonAnterior = document.querySelector(".botonAnterior");
+    const botonSiguiente = document.querySelector(".botonSiguiente");
 
     // Variables de control
     let indiceActual = 1; // Comenzamos con el segundo elemento activo (índice 1)
     const totalElementos = elementosCarrusel.length;
 
-    // Configurar posición inicial
+    // Función para inicializar el carrusel
     function inicializarCarrusel() {
-        // Calcular el ancho total del carrusel
+        // Forzar un recálculo de los estilos después de que las media queries se apliquen
         const anchoElemento = elementosCarrusel[0].offsetWidth;
-        const margenElemento = parseInt(window.getComputedStyle(elementosCarrusel[0]).marginRight);
-        const anchoTotal = (anchoElemento + margenElemento * 2) * totalElementos;
+        const margenElemento = parseInt(
+            window.getComputedStyle(elementosCarrusel[0]).marginRight
+        );
+
+        // Calcular el ancho total del carrusel
+        const anchoTotal = (anchoElemento + margenElemento) * totalElementos;
 
         // Establecer el ancho del carrusel
         carrusel.style.width = `${anchoTotal}px`;
@@ -25,19 +28,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para actualizar la posición del carrusel
     function actualizarCarrusel(conTransicion = true) {
+        // Desactivar transiciones si no se requieren
         if (!conTransicion) {
-            carrusel.style.transition = 'none';
+            carrusel.style.transition = "none";
         } else {
-            carrusel.style.transition = 'transform 0.5s ease-in-out';
+            carrusel.style.transition = "transform 0.5s ease-in-out";
         }
 
-        // Calcular el desplazamiento para centrar el elemento activo
+        // Forzar un recálculo de los estilos después de que las media queries se apliquen
         const anchoElemento = elementosCarrusel[0].offsetWidth;
-        const margenElemento = parseInt(window.getComputedStyle(elementosCarrusel[0]).marginRight);
-        const anchoTotal = anchoElemento + margenElemento * 2;
+        const margenElemento = parseInt(
+            window.getComputedStyle(elementosCarrusel[0]).marginRight
+        );
 
         // Calcular el desplazamiento para centrar el elemento activo
-        const desplazamiento = -indiceActual * anchoTotal + (window.innerWidth / 2 - anchoElemento / 2 - margenElemento);
+        const desplazamiento =
+            -indiceActual * (anchoElemento + margenElemento) +
+            (window.innerWidth / 2 - anchoElemento / 2);
 
         // Aplicar el desplazamiento
         carrusel.style.transform = `translateX(${desplazamiento}px)`;
@@ -45,16 +52,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // Actualizar clases activas
         elementosCarrusel.forEach((elemento, indice) => {
             if (indice === indiceActual) {
-                elemento.classList.add('activo');
+                elemento.classList.add("activo");
             } else {
-                elemento.classList.remove('activo');
+                elemento.classList.remove("activo");
             }
         });
 
         // Restaurar la transición después de un pequeño retraso si se desactivó
         if (!conTransicion) {
             setTimeout(() => {
-                carrusel.style.transition = 'transform 0.5s ease-in-out';
+                carrusel.style.transition = "transform 0.5s ease-in-out";
             }, 50);
         }
     }
@@ -63,8 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function irAlAnterior() {
         if (indiceActual > 0) {
             indiceActual--;
-            actualizarCarrusel();
+        } else {
+            indiceActual = totalElementos - 1; // Volver al final cuando llegue al inicio
         }
+        actualizarCarrusel();
     }
 
     // Función para ir al elemento siguiente
@@ -76,60 +85,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         actualizarCarrusel();
     }
-    
+
     // Eventos de click para los botones de navegación
-    botonAnterior.addEventListener('click', () => {
+    botonAnterior.addEventListener("click", () => {
         irAlAnterior();
         resetearAutoPlay();
     });
-    
-    botonSiguiente.addEventListener('click', () => {
+
+    botonSiguiente.addEventListener("click", () => {
         irAlSiguiente();
         resetearAutoPlay();
     });
 
-    // Inicializar el carrusel
+    // Inicializar el carrusel al cargar la página
     inicializarCarrusel();
 
-    // Mejorado: Event listener para resize que recalcula todo el carrusel
+    // Manejar el redimensionamiento de la ventana
     let resizeTimer;
     window.addEventListener("resize", () => {
         // Usar debounce para evitar recalcular demasiadas veces durante el resize
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            // Recalcular completamente el carrusel
+            // Forzar un recálculo de los estilos después de que las media queries se apliquen
             inicializarCarrusel();
-            
-            // Aplicar también los estilos de escala según el viewport
-            if (window.innerWidth >= 1024) {
-                elementosCarrusel.forEach(el => {
-                    el.style.transform = "scale(0.85)";
-                    el.style.opacity = "0.7";
-                });
-        
-                const activo = document.querySelector(".elementoCarrusel.activo");
-                if (activo) {
-                    activo.style.transform = "scale(1.1)";
-                    activo.style.opacity = "1";
-                }
-            } else {
-                // En pantallas más pequeñas, escala reducida
-                elementosCarrusel.forEach(el => {
-                    el.style.transform = "scale(0.95)";
-                    el.style.opacity = "0.7";
-                });
-        
-                const activo = document.querySelector(".elementoCarrusel.activo");
-                if (activo) {
-                    activo.style.transform = "scale(1.05)";
-                    activo.style.opacity = "1";
-                }
-            }
         }, 250); // Esperar 250ms después de que termine el resize
     });
 
-    // Event listener para cambio de orientación
-    window.addEventListener('orientationchange', function() {
+    // Manejar cambios de orientación en dispositivos móviles
+    window.addEventListener("orientationchange", () => {
         setTimeout(inicializarCarrusel, 100);
     });
 
@@ -141,39 +124,12 @@ document.addEventListener('DOMContentLoaded', function () {
         autoPlay = setInterval(irAlSiguiente, 3000);
     }
 
-    // También reiniciar auto-movimiento si el usuario desliza en el carrusel
-    carrusel.addEventListener('touchstart', resetearAutoPlay);
-
-    // Soporte para gestos táctiles (swipe)
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    carrusel.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    carrusel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        manejarGestoTactil();
-    });
-
-    function manejarGestoTactil() {
-        const umbralSwipe = 50; // Mínima distancia para considerar un swipe
-
-        if (touchEndX < touchStartX - umbralSwipe) {
-            // Swipe hacia la izquierda - siguiente
-            irAlSiguiente();
-        }
-
-        if (touchEndX > touchStartX + umbralSwipe) {
-            // Swipe hacia la derecha - anterior
-            irAlAnterior();
-        }
-    }
+    // Reiniciar auto-movimiento si el usuario interactúa con el carrusel
+    carrusel.addEventListener("touchstart", resetearAutoPlay);
 
     // Permitir hacer clic en un elemento para activarlo
     elementosCarrusel.forEach((elemento, indice) => {
-        elemento.addEventListener('click', () => {
+        elemento.addEventListener("click", () => {
             if (indice !== indiceActual) {
                 indiceActual = indice;
                 actualizarCarrusel();
@@ -182,43 +138,78 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // javascript para el funcionamiento de la barra de busqueda
+    const btnBuscar = document.getElementById("btnBuscar");
+    const opcionesBusqueda = document.getElementById("opcionesBusqueda");
+    const btnCategorias = document.getElementById("btnCategorias");
+    const submenuCategorias = document.getElementById("submenuCategorias");
 
+    // 💡 Click en la lupa para mostrar/ocultar opciones de búsqueda
+    btnBuscar.addEventListener("click", function () {
+        opcionesBusqueda.style.display =
+            opcionesBusqueda.style.display === "block" ? "none" : "block";
+    });
 
+    // 💡 Click en "Categorías" para mostrar/ocultar el submenú
+    btnCategorias.addEventListener("click", function () {
+        submenuCategorias.classList.toggle("activo");
+    });
 
+    // 💡 Ocultar menú si se hace click fuera de él
+    document.addEventListener("click", function (event) {
+        if (
+            !btnBuscar.contains(event.target) &&
+            !opcionesBusqueda.contains(event.target)
+        ) {
+            opcionesBusqueda.style.display = "none";
+        }
 
+        if (
+            !btnCategorias.contains(event.target) &&
+            !submenuCategorias.contains(event.target)
+        ) {
+            submenuCategorias.classList.remove("activo");
+        }
+    });
 
+    // javascript para el desplazamiento de los tops
+    document.querySelectorAll(".top").forEach((enlace) => {
+        enlace.addEventListener("click", function (e) {
+            e.preventDefault(); // Evita el comportamiento predeterminado
+            const targetId = this.getAttribute("href").substring(1); // Obtiene el ID destino sin #
+            const targetElement = document.getElementById(targetId);
 
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop, // Calcula la posición
+                    behavior: "smooth", // Aplica el efecto suave
+                });
+            }
+        });
+    });
 
-    
+    // Logica para opciones del usuario
+    const imagenPerfil = document.getElementById("imagenPerfil");
+    const menuDesplegable = document.getElementById("menuDesplegable");
 
+    imagenPerfil.addEventListener("click", function (event) {
+        // Alternar la visibilidad del menú
+        if (menuDesplegable.style.display === "block") {
+            menuDesplegable.style.display = "none";
+        } else {
+            menuDesplegable.style.display = "block";
+        }
+        // Evitar que el clic se propague al documento y cierre el menú de inmediato
+        event.stopPropagation();
+    });
 
-
-
-
-const btnBuscar = document.getElementById("btnBuscar");
-const opcionesBusqueda = document.getElementById("opcionesBusqueda");
-const btnCategorias = document.getElementById("btnCategorias");
-const submenuCategorias = document.getElementById("submenuCategorias");
-
-// 💡 Click en la lupa para mostrar/ocultar opciones de búsqueda
-btnBuscar.addEventListener("click", function () {
-    opcionesBusqueda.style.display = opcionesBusqueda.style.display === "block" ? "none" : "block";
+    // Cerrar el menú si se hace clic fuera de él
+    document.addEventListener("click", function (event) {
+        if (
+            !menuDesplegable.contains(event.target) &&
+            event.target !== imagenPerfil
+        ) {
+            menuDesplegable.style.display = "none";
+        }
+    });
 });
-
-// 💡 Click en "Categorías" para mostrar/ocultar el submenú
-btnCategorias.addEventListener("click", function () {
-    submenuCategorias.classList.toggle("activo");
-});
-
-// 💡 Ocultar menú si se hace click fuera de él
-document.addEventListener("click", function (event) {
-    if (!btnBuscar.contains(event.target) && !opcionesBusqueda.contains(event.target)) {
-        opcionesBusqueda.style.display = "none";
-    }
-
-    if (!btnCategorias.contains(event.target) && !submenuCategorias.contains(event.target)) {
-        submenuCategorias.classList.remove("activo");
-    }
-});
-});
-

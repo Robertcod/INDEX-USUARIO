@@ -2,9 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI";
 }
 
+html {
+    html {
+        scroll-behavior: smooth;
+    }
+}
 /* Variables de css*/
 :root {
     --color-primary: #a68160;
@@ -40,22 +46,80 @@ header {
         display: flex;
         align-items: center;
         gap: 10px;
-    }
 
-    /* 🔍 Botón de búsqueda */
+        .fa-magnifying-glass {
+            color: var(--color-primary);
+            font-size: 1.5em;
+        }
+        .fa-solid{
+            font-size: 1.5em;
+
+        }
+
+        #contenedorPerfil {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+
+            .menuDesplegable {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: var(--color-secondary);
+                box-shadow: 0 .2em .4em var(--color-primary);
+                border-radius: .3em;
+                overflow: hidden;
+                min-width: 15em;
+                font-size: .8em;
+                list-style: none;
+                padding: 0;
+                z-index: 20;
+            }
+
+            .contenedorPerfil.activo .menuDesplegable {
+                display: block;
+            }
+
+            .contenedorPerfil:hover .menuDesplegable {
+                display: block;
+            }
+
+            .menuDesplegable li {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .menuDesplegable li:last-child {
+                border-bottom: none;
+            }
+
+            .menuDesplegable a {
+                display: block;
+                padding: .7em;
+                text-decoration: none;
+                color: black;
+                transition: background 0.2s;
+            }
+
+            .menuDesplegable a:hover {
+                background: var(--color-primary);
+                color: var(--color-white);
+            }
+        }
+    }
     .botonBuscar {
         background: none;
         border: none;
-        font-size: 1.5rem;
+        font-size: 1.3em;
         cursor: pointer;
     }
 
-    /* 🎭 Ocultamos las opciones de búsqueda inicialmente */
+    /*Ocultamos las opciones de búsqueda inicialmente */
     .opcionesBusqueda {
         display: none;
         position: absolute;
         top: 50px;
-        left: 50%;
+        right: 5%;
         transform: translateX(-50%);
         background: white;
         padding: 10px;
@@ -101,7 +165,7 @@ header {
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .botonCategorias:hover+.submenuCategorias {
+    .botonCategorias:hover + .submenuCategorias {
         display: block;
     }
 
@@ -113,7 +177,6 @@ header {
         color: white;
         transition: 0.3s;
     }
-
 
     .imagenPerfil {
         width: clamp(2rem, 6vw, 4rem);
@@ -130,6 +193,7 @@ header {
         height: 100%;
         color: var(--color-primary);
         font-weight: 500;
+        font-size: 1.5em;
     }
 }
 
@@ -155,12 +219,11 @@ main {
             position: relative;
             width: 40em;
             height: 28em;
-            margin: 0 .9em;
-            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-03-07%20202616-XgCF11xdSnuNYzQRytiXLVDFPwWiwk.png');
+            margin: 0 0.9em;
             background-size: cover;
             background-position: center;
             color: white;
-            border-radius: .7em;
+            border-radius: 0.7em;
             overflow: hidden;
             transition: all 0.5s ease;
             transform: scale(0.85);
@@ -168,10 +231,16 @@ main {
             display: flex;
             align-items: end;
             justify-content: center;
-            box-shadow: 0 .2em 1em rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.2);
 
             .contenidoElemento {
-                background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.8) 30%, black 50%);
+                background: linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(0, 0, 0, 0.4) 10%,
+                    rgba(0, 0, 0, 0.8) 30%,
+                    black 50%
+                );
                 position: relative;
                 z-index: 2;
                 display: grid;
@@ -181,6 +250,7 @@ main {
                 justify-content: space-between;
                 text-align: center;
                 padding: 1.1em;
+                width: 100%;
 
                 .imagenPerfil {
                     border-radius: 100%;
@@ -209,13 +279,13 @@ main {
 
                     .tituloEstablecimiento {
                         font-size: 1.5em;
-                        margin-bottom: .8em;
-                        text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.5);
+                        margin-bottom: 0.8em;
+                        text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
                     }
 
                     .descripcionEstablecimiento {
                         font-size: 0.8em;
-                        margin-bottom: .9em;
+                        margin-bottom: 0.9em;
                         line-height: 1.4;
                         display: -webkit-box;
                         -webkit-box-orient: vertical;
@@ -232,21 +302,21 @@ main {
                         border-radius: 3.5em;
                         font-size: 1.2em;
                         font-weight: bold;
-                        color: #9B7757;
+                        color: #9b7757;
                         cursor: pointer;
-                        box-shadow: .1em 1.5em .2em rgba(0, 0, 0, 0.2);
+                        box-shadow: 0.1em 1.5em 0.2em rgba(0, 0, 0, 0.2);
                         outline: none;
                         transition: 0.3s;
 
                         .icono {
                             width: 3.5em;
                             height: 3.5em;
-                            background: #9B7757;
+                            background: #9b7757;
                             border-radius: 50%;
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            margin-right: .8em;
+                            margin-right: 0.8em;
 
                             img {
                                 width: 60%;
@@ -258,7 +328,13 @@ main {
             }
 
             .contenidoElemento {
-                background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.8) 30%, black 50%);
+                background: linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(0, 0, 0, 0.4) 10%,
+                    rgba(0, 0, 0, 0.8) 30%,
+                    black 50%
+                );
                 position: relative;
                 z-index: 2;
                 display: grid;
@@ -319,7 +395,7 @@ main {
                         border-radius: 50px;
                         font-size: 20px;
                         font-weight: bold;
-                        color: #9B7757;
+                        color: #9b7757;
                         cursor: pointer;
                         box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
                         outline: none;
@@ -328,7 +404,7 @@ main {
                         .icono {
                             width: 50px;
                             height: 50px;
-                            background: #9B7757;
+                            background: #9b7757;
                             border-radius: 50%;
                             display: flex;
                             justify-content: center;
@@ -354,8 +430,14 @@ main {
                 top: 0;
                 right: 0;
                 background: rgb(0, 0, 0);
-                background: linear-gradient(90deg, rgba(0, 0, 0, 0) 4%, rgba(0, 0, 0, 0.3477766106442577) 10%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 39%);
-                padding: .2em 2.5em;
+                background: linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0) 4%,
+                    rgba(0, 0, 0, 0.3477766106442577) 10%,
+                    rgba(0, 0, 0, 1) 20%,
+                    rgba(0, 0, 0, 1) 39%
+                );
+                padding: 0.2em 2.5em;
                 font-weight: bold;
                 z-index: 2;
                 font-size: 1.1em;
@@ -437,7 +519,6 @@ main {
     /*fin botones de el carrusel */
 }
 
-
 .establecimientosRecomendados {
     max-width: 100vw;
     padding: 3em;
@@ -459,7 +540,7 @@ main {
         .cartaEstablecimiento {
             width: 20em;
             border: 2px solid var(--color-primary);
-            border-radius: .8em;
+            border-radius: 0.8em;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -472,14 +553,14 @@ main {
                 width: 100%;
                 height: 14em;
                 object-fit: cover;
-                margin-bottom: -.5em;
+                margin-bottom: -0.5em;
             }
 
             .contenedorInformacion {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
-                padding: .5em .5em 0 .5em;
+                padding: 0.5em 0.5em 0 0.5em;
                 border-top: 2px solid var(--color-primary);
                 background-color: var(--color-white);
 
@@ -490,8 +571,6 @@ main {
                     grid-template-columns: 1fr 1fr;
                     align-items: center;
                     background-color: var(--color-white);
-
-
 
                     .nombreDescripcion {
                         height: 100%;
@@ -525,10 +604,8 @@ main {
                             -webkit-box-orient: vertical;
                             overflow: hidden;
                             transition: opacity 0.3s ease-in-out;
-
                         }
                     }
-
 
                     .servicios {
                         height: 100%;
@@ -542,7 +619,7 @@ main {
                         ul {
                             position: relative;
                             font-weight: normal;
-                            font-size: .9em;
+                            font-size: 0.9em;
                             display: -webkit-box;
                             -webkit-line-clamp: 4;
                             /* Máximo 4 líneas */
@@ -556,9 +633,6 @@ main {
 
                             li {
                                 font-size: 1em;
-
-
-
                             }
                         }
 
@@ -576,7 +650,7 @@ main {
                     /* Empuja el botón al fondo */
 
                     text-align: center;
-                    padding: .5em;
+                    padding: 0.5em;
                 }
 
                 .botonAgendar {
@@ -596,9 +670,6 @@ main {
             }
         }
     }
-
-
-
 }
 
 .establecimientosDestacados {
@@ -610,12 +681,10 @@ main {
     gap: 2em;
     max-width: 100vw;
 
-
     .tituloSeccion {
         text-align: center;
         font-size: 1.7em;
     }
-
 
     .contenedorImagenesDestacado {
         /* Contenedor de tarjetas */
@@ -635,7 +704,7 @@ main {
         grid-template-rows: 80% 20%;
         width: 20em;
         height: 300px;
-        border-radius: .7em;
+        border-radius: 0.7em;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         position: relative;
@@ -656,7 +725,7 @@ main {
         /* Ajusta la imagen */
         display: block;
         /* Elimina espacio extra */
-        border-radius: .7em .7em 0 0;
+        border-radius: 0.7em 0.7em 0 0;
     }
 
     .nombrePosicion {
@@ -665,10 +734,9 @@ main {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: .5em 0;
+        padding: 0.5em 0;
         gap: 0.5em;
-        border-radius: 0 0 .4em .4em;
-
+        border-radius: 0 0 0.4em 0.4em;
     }
 
     .nombrePosicion h4 {
@@ -690,7 +758,6 @@ main {
         transform: scale(1.05) translateY(-5px);
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
     }
-
 }
 
 /* INICIO DE FOOTER*/
@@ -720,7 +787,6 @@ footer {
 
         .sobreNosotrosContenido {
             display: grid;
-
         }
 
         .redes {
@@ -766,13 +832,8 @@ footer {
 
 /* FIN DE FOOTER*/
 
-
-
 /* Ajustes para tablets grandes y portatiles */
 @media (max-width: 1024px) {
-    body{
-        background-color: gold;
-    }
     main {
         gap: 0em;
     }
@@ -816,7 +877,7 @@ footer {
             /* Empuja el botón al fondo */
 
             text-align: center;
-            padding: .5em;
+            padding: 0.5em;
         }
 
         .botonAgendar {
@@ -835,7 +896,6 @@ footer {
         }
     }
 
-
     .establecimientosDestacados {
         gap: 2em;
         padding: 2em 3em;
@@ -850,7 +910,6 @@ footer {
 
             /* Mantiene tamaño */
             height: 300px;
-
         }
 
         .contenedorImagenesDestacado {
@@ -917,7 +976,6 @@ footer {
             grid-area: izquierda;
             padding: 0em 0em;
             text-align: center;
-
         }
 
         .sta {
@@ -931,16 +989,38 @@ footer {
         .atencionCliente {
             grid-area: derecha;
             padding: 0em 0em;
-
         }
     }
 }
-
 
 /* Ajustes para móviles medianos y tablets pequeñas */
 @media (max-width: 750px) {
     main {
         gap: 0em;
+    }
+
+    header {
+
+        .navegacion {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .fa-magnifying-glass {
+                color: var(--color-primary);
+                font-size: .9em;
+            }
+            .fa-solid{
+                font-size: .9em;
+            }
+        }
+        .botonBuscar {
+            background: none;
+            border: none;
+            font-size: 1.3em;
+            cursor: pointer;
+        }
     }
 
     .contenedorCarrusel {
@@ -998,7 +1078,7 @@ footer {
                         display: grid;
                         flex-grow: 1;
                         grid-template-columns: 1fr 1fr;
-                        gap: .7em;
+                        gap: 0.7em;
 
                         .nombreDescripcion {
                             font-size: 0.9em;
@@ -1014,8 +1094,6 @@ footer {
                         }
 
                         .servicios {
-
-
                             ul {
                                 -webkit-line-clamp: 3;
 
@@ -1032,8 +1110,6 @@ footer {
                 }
             }
         }
-
-
     }
 
     .establecimientosDestacados {
@@ -1059,7 +1135,6 @@ footer {
 
             /* Mantiene tamaño */
             height: 300px;
-
         }
 
         .cardDestacado:nth-child(1) {
@@ -1073,12 +1148,10 @@ footer {
             order: 1;
         }
 
-
         .cardDestacado:nth-child(3) {
             order: 3;
             /* El primer hijo pasa a ser el segundo */
         }
-
 
         .cardDestacado:hover {
             /* Efecto al pasar el mouse */
@@ -1088,10 +1161,9 @@ footer {
     }
 
     footer {
-        font-size: .6em;
+        font-size: 0.6em;
     }
 }
-
 
 /* Ajustes para móviles pequeños */
 @media (max-width: 480px) {
@@ -1143,8 +1215,6 @@ footer {
                 max-width: 16em;
 
                 .contenedorInformacion {
-
-
                     /* Hace que la información crezca ocupando el espacio disponible */
                     .informacion {
                         .nombreDescripcion {
@@ -1155,7 +1225,7 @@ footer {
                             }
 
                             p {
-                                font-size: .9em;
+                                font-size: 0.9em;
                                 -webkit-line-clamp: 3;
                             }
                         }
@@ -1163,14 +1233,13 @@ footer {
                         .servicios {
                             h3 {
                                 font-size: 1.2em;
-
                             }
 
                             ul {
                                 -webkit-line-clamp: 3;
 
                                 li {
-                                    font-size: .9em;
+                                    font-size: 0.9em;
                                 }
                             }
 
@@ -1188,7 +1257,7 @@ footer {
                         /* Empuja el botón al fondo */
 
                         text-align: center;
-                        padding: .5em;
+                        padding: 0.5em;
                     }
 
                     .botonAgendar {
@@ -1208,8 +1277,6 @@ footer {
                 }
             }
         }
-
-
     }
 
     .establecimientosDestacados {
