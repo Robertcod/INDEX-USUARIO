@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI";
+}
+
+html {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Variables de css*/
+:root {
+    --color-primary: #a68160;
+    --color-secondary: #f2f2f2;
+    --color-white: white;
+    --color-black: black;
+}
+
+body {}
+
+main {
+    display: flex;
+    gap: 20px;
+    padding: 1em 3em;
+}
+
+.contenedor_bandeja {
+    flex: 1;
+    /* Ocupa el espacio disponible */
+    max-width: 20em;
+    /* Ancho mínimo */
+}
+
+.contenedor-administrador {
+    flex: 2;
+    /* Más grande que la izquierda */
+}
+
+
+
+/* h */
+
+
+
+.contenedor_bandeja {
+    width: 100%;
+    border-radius: .8em;
+    overflow: hidden;
+    height: 100;
+}
+
+/* Encabezado de la bandeja */
+.encabezado_bandeja {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: .8em;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+}
+
+/* Contenido con scroll */
+.contenido_bandeja {
+    padding: .7em;
+    max-height: 20em;
+    display: grid;
+    gap: .5em;
+    overflow-y: auto;
+    border-left: 0.2em solid var(--color-primary);
+    border-right: 0.2em solid var(--color-primary);
+    border-bottom: 0.2em solid var(--color-primary);
+    border-radius: 0 0 0.7em 0.7em;
+    
+    background-color: var(--color-secondary);
+}
+
+/* Elemento individual */
+.elemento_bandeja {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    border-radius: .4em;
+}
+
+/* Elemento leído */
+.elemento_leido {
+    background-color: var(--color-primary);
+    color: white;
+    border: 1px solid var(--color-primary);
+
+    .contenedor_fecha {
+        border-color: var(--color-white);
+
+    }
+
+    .sobre {
+        color: var(--color-white);
+    }
+
+
+}
+
+/* Contenedor de fecha */
+.contenedor_fecha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-right: .7em;
+    padding: .4em .7em;
+    border-right: 1px solid var(--color-black);
+
+}
+
+/* Número de fecha */
+.numero_fecha {
+    font-weight: bold;
+    font-size: .9em;
+}
+
+/* Mes de fecha */
+.mes_fecha {
+    font-size: .9em;
+}
+
+/* Texto de la solicitud */
+.texto_solicitud {
+    flex: 1;
+    font-size: .9em;
+    font-weight: 600;
+}
+
+/* Contenedor del icono */
+.contenedor_icono {
+    margin-right: .7em;
+    margin-left: .7em;
+    position: relative;
+}
+
+/* Sobre cerrado */
+.sobre {
+    border-radius: .1em;
+    position: relative;
+    font-size: 1.3em;
+    color: #a68160;
+    /* Color para estado pendiente */
+}
+
+
+/* Estilos para la barra de desplazamiento */
+.contenido_bandeja::-webkit-scrollbar {
+    width: 6px;
+}
+
+.contenido_bandeja::-webkit-scrollbar-track {
+    background: #e6d2b5;
+}
+
+.contenido_bandeja::-webkit-scrollbar-thumb {
+    background-color: #b08968;
+    border-radius: 6px;
+}
