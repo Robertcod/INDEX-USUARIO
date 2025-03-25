@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Definir todas las secciones correctamente usando los IDs
     const secciones = {
         'inicio': document.getElementById('inicio'),
@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Referencias a los botones
-    const botones = document.querySelectorAll('.btnCrud');
+    const botones = document.querySelectorAll('.boton-seccion');
 
     // Ocultar todas las secciones y mostrar la de inicio por defecto
     ocultarTodasLasSecciones();
     secciones.inicio.style.display = 'grid';
-
+    botones[0].classList.add('active');
     // Agregar eventos a los botones
     botones.forEach(boton => {
-        boton.addEventListener('click', function() {
+        boton.addEventListener('click', function () {
             const nombreSeccion = this.textContent.toLowerCase().trim(); // Convertir el texto del botón en clave válida
-            
+
             console.log("Sección seleccionada:", nombreSeccion); // Para depuración
 
             // Desactivar todos los botones primero
@@ -27,6 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Activar el botón actual
             this.classList.add('active');
 
+            // Desactivar todos los botones primero
+            botones.forEach(btn => btn.classList.remove('active'));
+
+            // Activar el botón actual
+            this.classList.add('active');
+            
             // Ocultar todas las secciones
             ocultarTodasLasSecciones();
 

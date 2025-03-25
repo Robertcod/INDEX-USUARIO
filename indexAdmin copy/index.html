@@ -32,7 +32,7 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </div>
-    
+
                         <div class="contenedor-categorias">
                             <button class="boton-categorias" id="btnCategorias">
                                 Categorías
@@ -48,18 +48,18 @@
                 </li>
                 <li><a href="{{ url('/usuarios/index') }}"><i class="fa-solid fa-house-chimney"></i></a></li>
                 <li class="tops"><a href="#top" class="top"><i class="fa-solid fa-trophy"></i></a></li>
-    
+
                 <li id="contenedor-perfil">
-                    <img id="imagenPerfil" class="imagen-perfil" 
+                    <img id="imagenPerfil" class="imagen-perfil"
                         src="https://img.freepik.com/foto-gratis/foto-chico-guapo-afeitar-mira-expresion-agradable-directamente-camara_176532-8164.jpg"
                         alt="Foto de perfil" />
-    
+
                     <ul id="menuDesplegable" class="menu-desplegable">
                         <li><a href="#">Ajustes</a></li>
-    
-                            <li><a href="#">Configuraciones Avanzadas</a></li>
 
-    
+                        <li><a href="#">Configuraciones Avanzadas</a></li>
+
+
                         <li><a href="#">Cerrar Sesión</a></li>
                     </ul>
                 </li>
@@ -128,27 +128,30 @@
         </aside>
         <section class="contenedor-administrador">
             <nav class="navegacion">
-                <button type="submit" class="btnCrud">INICIO</button>
-                <button type="submit" class="btnCrud">STAFF</button>
-                <button type="submit" class="btnCrud">PRODUCTOS</button>
-                <button type="submit" class="btnCrud">SERVICIOS</button>
+                <button type="submit" class="boton-seccion">INICIO</button>
+                <button type="submit" class="boton-seccion">STAFF</button>
+                <button type="submit" class="boton-seccion">PRODUCTOS</button>
+                <button type="submit" class="boton-seccion">SERVICIOS</button>
             </nav>
 
             <section class="secciones">
                 <div class="inicio" id="inicio">
-                    
-                        <figure class="portada">
-                          <img src="https://assets.goal.com/images/v3/blt2aaca933046f8b00/Cristiano%20Ronaldo%20Portugal%202024%20(4).jpg?auto=webp&format=pjpg&width=3840&quality=60" alt="Imagen de portada de la barbería" class="imagen-portada">
-                          <img src="https://i.scdn.co/image/ab67616d0000b2734219f4f48a27b891d4f8295b" alt="Logo de la barbería" class="foto-imagen-perfil">
-                          
-                          <!-- Botones de edición -->
-                          <button class="boton-editar editar-perfil-establecimiento" aria-label="Editar imagen de perfil">✏️</button>
-                          <button class="boton-editar editar-portada" aria-label="Editar imagen de portada">✏️</button>
-                        </figure>
-                      
-                        <figcaption class="descripcion">Imagen de portada y perfil</figcaption>
+
+                    <figure class="portada">
+                        <img src="https://assets.goal.com/images/v3/blt2aaca933046f8b00/Cristiano%20Ronaldo%20Portugal%202024%20(4).jpg?auto=webp&format=pjpg&width=3840&quality=60"
+                            alt="Imagen de portada de la barbería" class="imagen-portada">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2734219f4f48a27b891d4f8295b"
+                            alt="Logo de la barbería" class="foto-imagen-perfil">
+
+                        <!-- Botones de edición -->
+                        <button class="boton-editar editar-perfil-establecimiento"
+                            aria-label="Editar imagen de perfil">✏️</button>
+                        <button class="boton-editar editar-portada" aria-label="Editar imagen de portada">✏️</button>
+                    </figure>
+
+                    <figcaption class="descripcion">Imagen de portada y perfil</figcaption>
                 </div>
-                
+
                 <div class="staff seccion-opcion" id="staff">
                     <form class="agregar" action="{{ route('staff', ['accion' => 'register']) }}" method="POST">
                         <button type="submit" style="background: none;">
@@ -164,83 +167,103 @@
                         <h3>Cristiano ronaldo</h3>
                         <p>Soy una enamorada al arte, amo lo que hago y me encanta ver a los clientes felices</p>
                         <div class="contenedor-botones">
-                            <a href="../../Form/Register/Staff/regsiterStaff.html"><button type="submit" class="boton">Editar</button></a>
-                            <a href="#"><button type="submit" class="boton">Eliminar</button></a>
+                            <!-- <a href="../../Form/Register/Staff/regsiterStaff.html"><button type="submit"
+                                    class="boton">Editar</button></a>
+                            <a href="#"><button type="submit" class="boton">Eliminar</button></a> -->
+                            <form action="{{ $staff['id_staff'] }}">
+                                <button class="boton" type="submit" value="{{ $staff['id_staff'] }}"
+                                    name="editStaff">Editar</button>
+                            </form>
+                            <form action="{{ $staff['id_staff'] }}">
+                                <button class="boton" value="{{ $staff['id_staff'] }}"
+                                    name="deleteStaff">Eliminar</button>
+                            </form>
+                        </div>
+
+                    </article>
+
+                    <form class="agregar" action="" method="POST">
+                        <button type="submit" style="background: none;">
+                            <i class="fa-solid fa-users"></i>
+                            <p>VER TODOS</p>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="productos seccion-opcion" id="productos">
+                    <form class="agregar" action="{{ route('staff', ['accion' => 'register']) }}" method="POST">
+                        <button type="submit" style="background: none;">
+                            <i class="fa-solid fa-plus"></i>
+                            <p>AGREGAR</p>
+                        </button>
+                    </form>
+                    <article class="carta">
+                        <figure class="carta-imagen">
+                            <img src="https://gvlaboratorio.com/wp-content/uploads/2020/04/minoxidil-2-gv-.jpg" alt="">
+                        </figure>
+                        <h3>Minoxidil 2%</h3>
+                        <p>Usado para estimular el crecimiento del cabello y desacelerar la calvicie</p>
+                        <div class="contenedor-botones">
+                            <form action="{{ $product['id_prod'] }}">
+                                <button class="boton" type="submit" value="{{$product['id_prod']}}"
+                                    name="editProducto">Editar</button>
+                            </form>
+                            <form action="{{ $product['id_prod'] }}">
+                                <button class="boton" value="{{$product['id_prod']}}"
+                                    name="deleteProducto">Eliminar</button>
+                            </form>
                         </div>
                     </article>
-
+                    <form class="ver-todos" action="{{ route('productos', ['accion' => 'ver']) }}" method="POST">
+                        <button type="submit" style="background: none;">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <p>VER TODOS</p>
+                        </button>
+                    </form>
                 </div>
 
-                <div class="productos" id="productos">
-                    <span class="rediretViewProductos">
-                        <a href="{{ route('productos', ['accion' => 'ver']) }}" class="tittleRediret" ver="true">VER
-                            TODOS...</a>
-                    </span>
-
-                    <article class="productosItem">
-                        @foreach($productsPreview as $product)
-                        <figure class="productoCard">
-                            <img src="{{$product['img_prod']}}" alt="" class="imgProducto">
-
-                            <span class="nomProducto">{{$product['nombre_prod']}}</span>
-
-                            <p class="descripProducto">{{$product['desc_prod']}}</p>
-
-                            <span class="rediretRegister">
-                                <form action="{{ route('productos', ['accion' => 'editar']) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btnOption" name="editProducto"
-                                        value="{{ $product['id_prod'] }}">Editar</button>
-                                </form>
-                                <!--                         <button type="submit" class="btnOption" id="eliminarItem" value="{{$product['id_prod']}}" name="deleteProducto">Eliminar</button>
-                                </form>  -->
-                            </span>
+                <div class="servicios seccion-opcion" id="servicios">
+                    <form class="agregar" action="{{ route('staff', ['accion' => 'register']) }}" method="POST">
+                        <button type="submit" style="background: none;">
+                            <i class="fa-solid fa-plus"></i>
+                            <p>AGREGAR</p>
+                        </button>
+                    </form>
+                    <article class="carta">
+                        <figure class="carta-imagen">
+                            <img src="https://img.freepik.com/foto-gratis/bodegon-ajuste-autocuidado-masculino-alto-angulo_23-2150326535.jpg?t=st=1742876064~exp=1742879664~hmac=8e04151297cc48f08d7b9c9c5a0461913afeb5edf9a11ec08a18b3302d2ee9e9&w=996"
+                                alt="">
                         </figure>
-                        @endforeach
+                        <h3>Cortes de cabello</h3>
+                        <p>cambio de estilo o longitud del cabello. Puede ser realizado con tijeras, cuchillas, máquinas de rasurar o afeitar.</p>
+                        <div class="contenedor-botones">
+                            <form action="{{ $product['id_prod'] }}">
+                                <button class="boton" type="submit" value="{{$product['id_prod']}}"
+                                    name="editProducto">Editar</button>
+                            </form>
+                            <form action="{{ $product['id_prod'] }}">
+                                <button class="boton" value="{{$product['id_prod']}}"
+                                    name="deleteProducto">Eliminar</button>
+                            </form>
+                        </div>
                     </article>
-                </div>
-                <div class="servicios" id="servicios">
-                    <span class="rediretViewProductos">
-                        <a link href="{{ route('tipoServicios', ['accion' => 'ver']) }}" class="tittleRediret">VER TIPOS
-                            DE SERVICIO</a>
-                        <a link href="{{route('servicios')}}" class="tittleRediret">VER SERVICIOS</a>
-                    </span>
-
-                    <div class="contianerCategoria">
-
-                        @foreach($categorias as $categoria)
-                        <article class="categoriaCard">
-                            <figure class="imgCategoria">
-                                <img src="{{$categoria['imagen']}}" alt="" class="fotoCategoria">
-                            </figure>
-
-                            <div class="infoCategoria">
-                                <h3 class="nomCategoria">{{$categoria['nom_categoria']}}</h3>
-                                <p class="descripCategoria">{{$categoria['desc_categoria']}}</p>
-                                <form action="{{ route('categorias', ['accion' => 'editar']) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btnOption" name="editCategoria"
-                                        value="{{ $categoria['id_categoria'] }}">
-                                        Editar Categoría
-                                    </button>
-                                </form>
-                            </div>
-                        </article>
-                        @endforeach
-
-                    </div>
-
-                    <span class="rediretCategoria">
-                        <p class="nomRediret">¿ Deseas registrar una categoría nueva ?<a
-                                href="{{ route('categorias', ['accion' => 'nuevo']) }}">Registrar Aquí</a></p>
-                    </span>
+                    <form class="ver-todos" action="{{ route('productos', ['accion' => 'ver']) }}" method="POST">
+                        <button type="submit" style="background: none;">
+                            <i class="fa-solid fa-star"></i>
+                            <p>VER TODOS</p>
+                        </button>
+                    </form>
                 </div>
             </section>
         </section>
         </section>
     </main>
 
-
+<div class="contenedor-notificacion">
+    <div class="carta-notificaion">
+        
+    </div>
+</div>
 
 
 
