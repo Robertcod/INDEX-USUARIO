@@ -135,7 +135,7 @@
             </nav>
 
             <section class="secciones">
-                <div class="inicio seccion-opcion" id="inicio">
+                <div class="inicio" id="inicio">
                     
                         <figure class="portada">
                           <img src="https://assets.goal.com/images/v3/blt2aaca933046f8b00/Cristiano%20Ronaldo%20Portugal%202024%20(4).jpg?auto=webp&format=pjpg&width=3840&quality=60" alt="Imagen de portada de la barbería" class="imagen-portada">
@@ -147,40 +147,30 @@
                         </figure>
                       
                         <figcaption class="descripcion">Imagen de portada y perfil</figcaption>
-                      </div>
+                </div>
                 
-
-
                 <div class="staff seccion-opcion" id="staff">
                     <form class="agregar" action="{{ route('staff', ['accion' => 'register']) }}" method="POST">
-                        <!-- @csrf -->
                         <button type="submit" style="background: none;">
-                            <figure class="staffCard" id="AñadirStaff">
-                                <a class="rediretStaff">+</a>
-                            </figure>
+                            <i class="fa-solid fa-plus"></i>
+                            <p>AGREGAR</p>
                         </button>
                     </form>
-                    <!-- <span class="rediretViewStaff">
-                        <a link href="../../View/Administrador/viewStaff.html" class="tittleRediret">VER TODOS...</a>
-                    </span> -->
-                    <article class="staffItem">
-                        @foreach($infoStaff as $item)
-                        <figure class="staffCard">
-                            <span class="nomStaff">{{$item['usuario']['nombre']}}</span>
 
-                            <img src="{{$item['img_staff']}}" alt="" class="imgStaff">
-
-                            <span class="rediretRegister">
-                                <button type="submit" class="btnOption"><a
-                                        href="../../Form/Register/Staff/regsiterStaff.html">Editar</a></button>
-                                <button type="submit" class="btnOption">Eliminar</button>
-                            </span>
+                    <article class="carta">
+                        <figure class="carta-imagen">
+                            <img src="https://i.scdn.co/image/ab67616d0000b2734219f4f48a27b891d4f8295b" alt="">
                         </figure>
-                        @endforeach
-
-
+                        <h3>Cristiano ronaldo</h3>
+                        <p>Soy una enamorada al arte, amo lo que hago y me encanta ver a los clientes felices</p>
+                        <div class="contenedor-botones">
+                            <a href="../../Form/Register/Staff/regsiterStaff.html"><button type="submit" class="boton">Editar</button></a>
+                            <a href="#"><button type="submit" class="boton">Eliminar</button></a>
+                        </div>
                     </article>
+
                 </div>
+
                 <div class="productos" id="productos">
                     <span class="rediretViewProductos">
                         <a href="{{ route('productos', ['accion' => 'ver']) }}" class="tittleRediret" ver="true">VER
