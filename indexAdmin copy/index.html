@@ -135,6 +135,7 @@
             </nav>
 
             <section class="secciones">
+
                 <div class="inicio" id="inicio">
 
                     <figure class="portada">
@@ -235,7 +236,8 @@
                                 alt="">
                         </figure>
                         <h3>Cortes de cabello</h3>
-                        <p>cambio de estilo o longitud del cabello. Puede ser realizado con tijeras, cuchillas, máquinas de rasurar o afeitar.</p>
+                        <p>cambio de estilo o longitud del cabello. Puede ser realizado con tijeras, cuchillas, máquinas
+                            de rasurar o afeitar.</p>
                         <div class="contenedor-botones">
                             <form action="{{ $product['id_prod'] }}">
                                 <button class="boton" type="submit" value="{{$product['id_prod']}}"
@@ -254,16 +256,60 @@
                         </button>
                     </form>
                 </div>
+
+                <div class="contenedor-notificacion" id="notificacion">
+                    <h3 class="motivo-carta">Solicitud de producto</h3>
+                    <div class="carta-notificaion">
+                        <div class="contenedor-izquierda" style="background-image: url('https://img.freepik.com/foto-gratis/bodegon-ajuste-autocuidado-masculino-alto-angulo_23-2150326535.jpg?t=st=1742876064~exp=1742879664~hmac=8e04151297cc48f08d7b9c9c5a0461913afeb5edf9a11ec08a18b3302d2ee9e9&w=996');">
+                            <h3>Crema daily grind</h3>
+                        </div>
+                        <div class="contenedor-derecha">
+                            <div class="foto-nombre">
+                                <img src="https://media.istockphoto.com/id/1766352902/es/v%C3%ADdeo/diversidad-de-personas-muchas-razas-diferentes-retrato-de-rostro-multi%C3%A9tnico-mezcla-humana.jpg?s=640x640&k=20&c=jJK56ZTa6OJ5eFLsMoIWd9M-YvuumhuE5b-69Q2MYEc="
+                                    alt="">
+                                <div class="solicitud">
+                                    <p class="requisito">Solicitado por</p>
+                                <p>Daniel Alzate</p>
+                                </div>
+                            </div>
+                            <div class="contenedor-requisito">
+                                <p class="requisito">Fecha entrega</p>
+                                <p>02/06/2025</p>
+                            </div>
+                            <div class="contenedor-requisito">
+                                <p class="requisito">Hora</p>
+                                <p>07:00 AM</p>
+                            </div>
+                            <div class="contenedor-requisito">
+                                <p class="requisito">Precio unitario</p>
+                                <p>30.000 COP</p>
+                            </div>
+                            <div class="contenedor-requisito">
+                                <p class="requisito">cantidad</p>
+                                <p>2</p>
+                            </div>
+                            <div class="contenedor-requisito total">
+                                <p class="requisito">Total</p>
+                                <p>60.000 COP</p>
+                            </div>
+                            <div class="contenedor-botones">
+                                <form action="#">
+                                    <button class="boton" type="submit" value="" name="RechazarSolicitud">Rechazar</button>
+                                </form>
+                                <form action="#">
+                                    <button class="boton" value="#" name="AceptarSolicitud">Aceptar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </section>
         </section>
+
     </main>
 
-<div class="contenedor-notificacion">
-    <div class="carta-notificaion">
-        
-    </div>
-</div>
+
 
 
 

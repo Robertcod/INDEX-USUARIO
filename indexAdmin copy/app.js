@@ -4,17 +4,19 @@ document.addEventListener('DOMContentLoaded', function () {
         'inicio': document.getElementById('inicio'),
         'staff': document.getElementById('staff'),
         'productos': document.getElementById('productos'),
-        'servicios': document.getElementById('servicios')
+        'servicios': document.getElementById('servicios'),
+        'notificacion': document.getElementById('notificacion') // Asegúrate de corregir el ID en HTML
     };
 
-    // Referencias a los botones
+    // Referencias a los botones de navegación
     const botones = document.querySelectorAll('.boton-seccion');
 
     // Ocultar todas las secciones y mostrar la de inicio por defecto
     ocultarTodasLasSecciones();
     secciones.inicio.style.display = 'grid';
     botones[0].classList.add('active');
-    // Agregar eventos a los botones
+
+    // Agregar eventos a los botones de navegación
     botones.forEach(boton => {
         boton.addEventListener('click', function () {
             const nombreSeccion = this.textContent.toLowerCase().trim(); // Convertir el texto del botón en clave válida
@@ -27,12 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Activar el botón actual
             this.classList.add('active');
 
-            // Desactivar todos los botones primero
-            botones.forEach(btn => btn.classList.remove('active'));
-
-            // Activar el botón actual
-            this.classList.add('active');
-            
             // Ocultar todas las secciones
             ocultarTodasLasSecciones();
 
@@ -49,26 +45,41 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // **Lógica para abrir la sección de notificación**
+    const elementosBandeja = document.querySelectorAll(".elemento-bandeja");
+    const contenedorNotificacion = document.getElementById("notificacion");
+    const bandejaEntrada = document.querySelector(".contenedor-bandeja");
 
+    elementosBandeja.forEach(elemento => {
+        elemento.addEventListener("click", () => {
+            ocultarTodasLasSecciones();
+            contenedorNotificacion.style.display = "grid"; // Muestra la notificación
+        });
+    });
 
-    // logica para la secion de inicio
+    // **Lógica para volver a la bandeja si es necesario**
+    const botonVolver = document.createElement("button");
+    botonVolver.textContent = "Volver a bandeja";
+    botonVolver.classList.add("boton-volver");
+    contenedorNotificacion.appendChild(botonVolver);
+
+    botonVolver.addEventListener("click", () => {
+        contenedorNotificacion.style.display = "none";
+        bandejaEntrada.style.display = "block";
+    });
+
+    // **Lógica para cambiar imágenes (manteniendo tu código original)**
     const botonEditarPortada = document.querySelector(".editar-portada");
     const botonEditarPerfil = document.querySelector(".editar-perfil-establecimiento");
 
-    // Evento para cambiar la imagen de portada
     botonEditarPortada.addEventListener("click", () => {
         cambiarImagen(".imagen-portada");
     });
 
-    // Evento para cambiar la imagen de perfil
     botonEditarPerfil.addEventListener("click", () => {
         cambiarImagen(".foto-imagen-perfil");
     });
 
-    /**
-     * Función para cambiar la imagen seleccionada
-     * @param {string} selector - Selector de la imagen a modificar
-     */
     function cambiarImagen(selector) {
         const inputArchivo = document.createElement("input");
         inputArchivo.type = "file";
