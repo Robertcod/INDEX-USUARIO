@@ -57,17 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // **Lógica para volver a la bandeja si es necesario**
-    const botonVolver = document.createElement("button");
-    botonVolver.textContent = "Volver a bandeja";
-    botonVolver.classList.add("boton-volver");
-    contenedorNotificacion.appendChild(botonVolver);
-
-    botonVolver.addEventListener("click", () => {
-        contenedorNotificacion.style.display = "none";
-        bandejaEntrada.style.display = "block";
-    });
-
     // **Lógica para cambiar imágenes (manteniendo tu código original)**
     const botonEditarPortada = document.querySelector(".editar-portada");
     const botonEditarPerfil = document.querySelector(".editar-perfil-establecimiento");
