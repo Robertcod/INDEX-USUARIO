@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
         'notificacion': document.getElementById('notificacion') // Asegúrate de corregir el ID en HTML
     };
 
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+        document.getElementById("sidebar").classList.toggle("mostrar");
+    }); 
+    
     // Referencias a los botones de navegación
     const botones = document.querySelectorAll('.boton-seccion');
 

@@ -68,7 +68,11 @@
     </header>
 
     <main>
-        <aside class="contenedor-bandeja">
+        <button class="menu-btn" id="menu-toggle">
+            ☰
+        </button>
+
+        <aside class="contenedor-bandeja" id="sidebar">
             <div class="encabezado-bandeja">
                 <p>BANDEJA DE ENTRADA</p>
             </div>
@@ -155,36 +159,37 @@
 
                 <div class="staff seccion-opcion" id="staff">
                     <form class="agregar" action="{{ route('staff', ['accion' => 'register']) }}" method="POST">
+                        @csrf
                         <button type="submit" style="background: none;">
                             <i class="fa-solid fa-plus"></i>
                             <p>AGREGAR</p>
                         </button>
                     </form>
 
-                    <article class="carta">
-                        <figure class="carta-imagen">
-                            <img src="https://s1.ppllstatics.com/laverdad/www/multimedia/202301/31/media/cortadas/barbero-kLSB-U190459991003paG-1248x770@La%20Verdad.jpg" alt="">
+                    @foreach($infoStaff as $item)
+                    <article class="carta" id="carta-staff">
+                        <figure class="carta-imagen" id="foto-staff">
+                            <img src="https://s1.ppllstatics.com/laverdad/www/multimedia/202301/31/media/cortadas/barbero-kLSB-U190459991003paG-1248x770@La%20Verdad.jpg"
+                                alt="">
                             <p class="rol">Barbero</p>
                         </figure>
-                        <h3>Felipe Rodriguez</h3>
-                        <p>Soy un enamorado al arte, amo lo que hago y me encanta ver a los clientes felices</p>
+                        <h3>{{$item['usuario']['nombre']}}</h3>
                         <div class="contenedor-botones">
-                            <!-- <a href="../../Form/Register/Staff/regsiterStaff.html"><button type="submit"
-                                    class="boton">Editar</button></a>
-                            <a href="#"><button type="submit" class="boton">Eliminar</button></a> -->
                             <form action="{{ $staff['id_staff'] }}">
                                 <button class="boton" type="submit" value="{{ $staff['id_staff'] }}"
                                     name="editStaff">Editar</button>
                             </form>
                             <form action="{{ $staff['id_staff'] }}">
-                                <button class="boton" value="{{ $staff['id_staff'] }}"
+                                <button class="boton" type="submit" value="{{ $staff['id_staff'] }}"
                                     name="deleteStaff">Eliminar</button>
                             </form>
                         </div>
 
                     </article>
+                    @endforeach
 
-                    <form class="agregar" action="" method="POST">
+
+                    <form class="agregar" action="../../View/Administrador/viewStaff.html" method="get">
                         <button type="submit" style="background: none;">
                             <i class="fa-solid fa-users"></i>
                             <p>VER TODOS</p>
@@ -199,15 +204,16 @@
                             <p>AGREGAR</p>
                         </button>
                     </form>
+                @foreach($productsPreview as $product)
+
                     <article class="carta">
                         <figure class="carta-imagen">
-                            <img src="https://gvlaboratorio.com/wp-content/uploads/2020/04/minoxidil-2-gv-.jpg" alt="">
-                        <p class="stock">Stock 4</p>
-                        <p class="precio"><span>30000 COP</span></p>
-
+                            <img src="{{$product['img_prod']}}" alt="">
+                            <p class="stock">{{$product['stock']}}</p>
+                            <p class="precio"><span>{{$product['valor_prod']}}</span></p>
                         </figure>
-                        <h3>Minoxidil 2%</h3>
-                        <p>Usado para estimular el crecimiento del cabello y desacelerar la calvicie</p>
+                        <h3>{{$product['nombre_prod']}}</h3>
+                        <p>{{$product['desc_prod']}}</p>
                         <div class="contenedor-botones">
                             <form action="{{ $product['id_prod'] }}">
                                 <button class="boton" type="submit" value="{{$product['id_prod']}}"
@@ -219,6 +225,8 @@
                             </form>
                         </div>
                     </article>
+                @endforeach
+
                     <form class="ver-todos" action="{{ route('productos', ['accion' => 'ver']) }}" method="POST">
                         <button type="submit" style="background: none;">
                             <i class="fa-solid fa-boxes-stacked"></i>
@@ -264,7 +272,8 @@
                 <div class="contenedor-notificacion" id="notificacion">
                     <h3 class="motivo-carta">Solicitud de producto</h3>
                     <div class="carta-notificaion">
-                        <div class="contenedor-izquierda" style="background-image: url('https://img.freepik.com/foto-gratis/bodegon-ajuste-autocuidado-masculino-alto-angulo_23-2150326535.jpg?t=st=1742876064~exp=1742879664~hmac=8e04151297cc48f08d7b9c9c5a0461913afeb5edf9a11ec08a18b3302d2ee9e9&w=996');">
+                        <div class="contenedor-izquierda"
+                            style="background-image: url('https://img.freepik.com/foto-gratis/bodegon-ajuste-autocuidado-masculino-alto-angulo_23-2150326535.jpg?t=st=1742876064~exp=1742879664~hmac=8e04151297cc48f08d7b9c9c5a0461913afeb5edf9a11ec08a18b3302d2ee9e9&w=996');">
                             <h3>Crema daily grind</h3>
                         </div>
                         <div class="contenedor-derecha">
@@ -273,7 +282,7 @@
                                     alt="">
                                 <div class="solicitud">
                                     <p class="requisito">Solicitado por</p>
-                                <p>Daniel Alzate</p>
+                                    <p>Daniel Alzate</p>
                                 </div>
                             </div>
                             <div class="contenedor-requisito">
@@ -298,7 +307,8 @@
                             </div>
                             <div class="contenedor-botones">
                                 <form action="#">
-                                    <button class="boton" type="submit" value="" name="RechazarSolicitud">Rechazar</button>
+                                    <button class="boton" type="submit" value=""
+                                        name="RechazarSolicitud">Rechazar</button>
                                 </form>
                                 <form action="#">
                                     <button class="boton" value="#" name="AceptarSolicitud">Aceptar</button>
@@ -309,10 +319,8 @@
                 </div>
             </section>
         </section>
-        </section>
 
     </main>
-
 
 
 
