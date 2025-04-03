@@ -205,7 +205,6 @@
                         </button>
                     </form>
                 @foreach($productsPreview as $product)
-
                     <article class="carta">
                         <figure class="carta-imagen">
                             <img src="{{$product['img_prod']}}" alt="">
@@ -215,11 +214,13 @@
                         <h3>{{$product['nombre_prod']}}</h3>
                         <p>{{$product['desc_prod']}}</p>
                         <div class="contenedor-botones">
-                            <form action="{{ $product['id_prod'] }}">
+                            <form action="{{ route('productos', ['accion' => 'editar']) }}" method="POST">
+                                @csrf
                                 <button class="boton" type="submit" value="{{$product['id_prod']}}"
                                     name="editProducto">Editar</button>
                             </form>
-                            <form action="{{ $product['id_prod'] }}">
+                            <form action="{{ route('productos', ['accion' => 'eliminar']) }}" method="POST">
+                                @csrf
                                 <button class="boton" value="{{$product['id_prod']}}"
                                     name="deleteProducto">Eliminar</button>
                             </form>
@@ -227,7 +228,7 @@
                     </article>
                 @endforeach
 
-                    <form class="ver-todos" action="{{ route('productos', ['accion' => 'ver']) }}" method="POST">
+                    <form class="ver-todos" action="{{ route('productos', ['accion' => 'ver']) }}" method="get">
                         <button type="submit" style="background: none;">
                             <i class="fa-solid fa-boxes-stacked"></i>
                             <p>VER TODOS</p>
