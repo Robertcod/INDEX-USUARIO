@@ -161,7 +161,7 @@ main {
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
-    grid-template-rows: 1r 9fr;
+    grid-template-rows: 0.5fr 9fr;
     gap: 1em;
 
     & .navegacion {
@@ -181,6 +181,8 @@ main {
         border: 2px solid var(--color-primary);
         border-radius: 0.5em;
         background-color: var(--color-white);
+        height: 100%;
+
       }
 
       & button:hover,
@@ -199,14 +201,17 @@ main {
       min-height: 28em;
 
       & .seccion-opcion {
-        display: grid;
+        display: flex;
         gap: 1em;
-        grid-template-columns: 1fr 1fr 1fr;
         height: 70vh;
+        overflow-x: hidden;
 
 
         & .agregar,
         & .ver-todos {
+          transition: flex 0.3s ease-in-out, width 0.3s ease-in-out;
+          /* 👈 Aquí está la clave */
+          flex: 1 1 8vw;
           background-color: var(--color-white);
           border: 2px solid var(--color-primary);
           display: grid;
@@ -222,7 +227,7 @@ main {
             height: 100%;
             border: none;
             color: var(--color-primary);
-            font-size: clamp(.7em, 1.2vw, 3em);
+            font-size: clamp(.7em, 1vw, 3em);
             font-weight: bold;
 
             i {
@@ -241,39 +246,47 @@ main {
           }
         }
 
+        & .agregar:hover,
+        & .ver-todos:hover {
+          flex: 2 1 17vw;
+        }
+
         & .carta {
+          flex: 1 1 8vw;
+          height: 100%;
           display: grid;
           grid-template-columns: 1fr;
-          grid-template-rows: 4fr 1fr 2fr 1fr;
+          grid-template-rows: 4fr 1fr;
           justify-content: space-between;
           background-color: var(--color-secondary);
           border: 2px solid var(--color-primary);
           border-radius: 0.4em;
           height: 70vh;
-          padding: 0.5em;
           gap: 0.2em;
           position: relative;
           font-size: clamp(.8em, 1.2vw, 3em);
+          overflow: hidden;
+          transition: flex 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          cursor: pointer;
 
-
-
-          #foto-staff{
+          #foto-staff {
             height: 50vh;
           }
 
           & .carta-imagen {
+            background-color: var(--color-white);
+
             width: 100%;
-            height: 40vh;
             position: relative;
             display: grid;
-            
+
 
             & img {
-              border-radius: 0.4em;
               width: 100%;
-              height: 100%;
+              height: 70vh;
               object-fit: cover;
-              border: 2px solid var(--color-primary);
+              transition: height 0.3s ease-in-out, border 0.3s ease-in-out;
+
             }
 
             .stock {
@@ -290,8 +303,8 @@ main {
               position: absolute;
               bottom: 0px;
               width: 100%;
-              background-color: rgba(255, 255, 255, 0.342);
-              color: var(--color-primary);
+              background-color: rgba(0, 0, 0, 0.342);
+              color: var(--color-white);
               font-weight: bold;
               padding: .2em 0;
               text-align: center;
@@ -318,6 +331,11 @@ main {
           & p {
             font-size: 1em;
             font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            /* Limita a 6 líneas */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
 
 
@@ -325,7 +343,8 @@ main {
             width: 100%;
             justify-content: center;
             align-items: end;
-            align-self: end; /* Se alinea al final */
+            align-self: end;
+            /* Se alinea al final */
             display: grid;
             gap: 1em;
             grid-template-columns: 1fr 1fr;
@@ -355,11 +374,38 @@ main {
           }
         }
 
-        & #carta-staff{
+        .carta p,
+        .carta .contenedor-botones {
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+        }
+
+        .carta:hover {
+          flex: 2 1 17vw;
+          grid-template-rows: 4fr 1fr 2fr 1fr;
+          padding: 0.5em;
+
+          & img {
+            height: 40vh;
+            /* altura más pequeña al hacer hover */
+            border-radius: 0.4em;
+
+            border: 2px solid var(--color-primary);
+          }
+
+        }
+
+
+        & #carta-staff {
           display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: 4fr 1fr 1fr;
 
+        }
+
+        .carta:hover p,
+        .carta:hover .contenedor-botones {
+          opacity: 1;
         }
       }
 
@@ -447,29 +493,35 @@ main {
 
   .contenedor-notificacion {
     height: 70vh;
+    grid-template-rows: 0.5fr 9fr;
+    border-radius: .4em;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+
+    h3 {
+      text-align: center;
+
+    }
 
     .carta-notificaion {
+      background-color: var(--color-white);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 70vh;
       border: 2px solid var(--color-primary);
-      border-radius: .4em;
+      border-radius: .4em 0em .4em .4em;
     }
 
     .contenedor-izquierda {
       position: relative;
-      /* Necesario para posicionar el texto */
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      /* Asegura que el texto quede abajo */
       width: 100%;
       height: 100%;
       background-size: cover;
       overflow: hidden;
       /* Evita que el contenido se desborde */
-      border-radius: 0.3em 0 0 0.3em;
-      /* Esquinas suaves */
+      border-radius: 0em 0 0 0.3em;
 
 
       h3 {
@@ -494,6 +546,7 @@ main {
       grid-template-rows: auto auto auto auto;
       gap: 10px;
       padding: 1em;
+      color: var(--color-black);
 
       .foto-nombre {
         grid-column: span 2;
@@ -516,7 +569,7 @@ main {
       .contenedor-requisito {
         display: flex;
         flex-direction: column;
-
+        text-align: center;
         .requisito {
           font-weight: bold;
         }
@@ -526,7 +579,7 @@ main {
         grid-column: span 2;
         width: 100%;
         justify-content: center;
-        align-items: center;
+        align-items: end;
         display: grid;
         gap: 1em;
         grid-template-columns: 1fr 1fr;
@@ -605,6 +658,7 @@ main {
 @media (max-width: 768px) {
   main {
     padding: 1em;
+
     .contenedor-administrador {
       height: 100%;
       flex: 2;
@@ -615,14 +669,14 @@ main {
       gap: 1em;
       height: 100%;
 
-  
+
       & .navegacion {
         width: 100%;
         display: grid;
         gap: .4em;
         grid-template-columns: repeat(2, 1fr);
         justify-content: space-between;
-  
+
         & button {
           padding: 0.4em 0;
           width: 100%;
@@ -634,7 +688,7 @@ main {
           border-radius: 0.5em;
           background-color: var(--color-white);
         }
-  
+
         & button:hover,
         & button.active {
           color: var(--color-white);
@@ -643,20 +697,21 @@ main {
           transition: background 0.2s ease-in-out;
         }
       }
-  
+
       & .secciones {
         display: grid;
         grid-template-rows: repeat(auto-fit, minmax(20em, 1fr));
         max-height: 100%;
         min-height: 28em;
-  
+
         & .seccion-opcion {
           display: grid;
           gap: 1em;
           grid-template-columns: 1fr;
-          grid-template-columns: repeat(2, 1fr); /* 3 columnas iguales */
+          grid-template-columns: repeat(2, 1fr);
+          /* 3 columnas iguales */
           height: 100%;
-  
+
           & .agregar,
           & .ver-todos {
             background-color: var(--color-white);
@@ -666,8 +721,8 @@ main {
             height: 100%;
             border-radius: 0.5em;
             height: 50vh;
-  
-  
+
+
             button {
               display: grid;
               grid-template-rows: 9fr 1fr;
@@ -676,14 +731,14 @@ main {
               color: var(--color-primary);
               font-size: clamp(.7em, 1.2vw, 3em);
               font-weight: bold;
-  
+
               i {
                 font-size: clamp(5em, 3vw, 5em);
                 display: flex;
                 align-items: center;
                 justify-content: center;
               }
-  
+
               p {
                 font-size: 1.5em;
                 display: flex;
@@ -692,7 +747,7 @@ main {
               }
             }
           }
-  
+
           & .carta {
             display: grid;
             grid-template-columns: 1fr;
@@ -706,15 +761,15 @@ main {
             gap: 0.2em;
             position: relative;
             font-size: clamp(.8em, 1.2vw, 3em);
-  
-  
-  
-  
+
+
+
+
             & .carta-imagen {
               width: 100%;
               height: 23vh;
               position: relative;
-  
+
               & img {
                 border-radius: 0.4em;
                 width: 100%;
@@ -722,7 +777,7 @@ main {
                 object-fit: cover;
                 border: 2px solid var(--color-primary);
               }
-  
+
               .stock {
                 position: absolute;
                 top: 0px;
@@ -732,7 +787,7 @@ main {
                 padding: 5px 10px;
                 border-radius: 5px;
               }
-  
+
               .precio {
                 position: absolute;
                 bottom: 0px;
@@ -744,7 +799,7 @@ main {
                 text-align: center;
                 border-radius: .3em;
               }
-  
+
               .rol {
                 position: absolute;
                 top: 0px;
@@ -755,19 +810,19 @@ main {
                 border-radius: 5px;
               }
             }
-  
+
             & h3 {
               display: flex;
               justify-content: center;
               align-items: center;
             }
-  
+
             & p {
               font-size: 1em;
               font-weight: 500;
             }
-  
-  
+
+
             & .contenedor-botones {
               width: 100%;
               justify-content: center;
@@ -776,9 +831,9 @@ main {
               gap: 1em;
               padding-top: .5em;
               grid-template-columns: 1fr 1fr;
-  
+
               & form {
-  
+
                 & .boton {
                   width: 100%;
                   border: 2px solid var(--color-primary);
@@ -789,22 +844,22 @@ main {
                   font-weight: bold;
                   font-size: 1.1em;
                 }
-  
+
                 & .boton:hover {
                   border-color: var(--color-primary);
                   background-color: var(--color-secondary);
                   padding: 0.2em 0;
                   border-radius: 0.4em;
                   color: var(--color-primary);
-  
+
                 }
               }
             }
           }
-  
-  
+
+
         }
-  
+
         & .inicio {
           width: 100%;
           text-align: center;
@@ -814,7 +869,7 @@ main {
           display: flex;
           flex-direction: column;
           align-items: center;
-  
+
           & .portada {
             position: relative;
             width: 100%;
@@ -823,14 +878,14 @@ main {
             align-items: center;
             justify-content: center;
             overflow: hidden;
-  
+
             & .imagen-portada {
               width: 100%;
               height: 100%;
               object-fit: cover;
             }
           }
-  
+
           & .foto-imagen-perfil {
             position: absolute;
             bottom: 20px;
@@ -842,7 +897,7 @@ main {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             object-fit: cover;
           }
-  
+
           & .boton-editar {
             position: absolute;
             background: #fff;
@@ -852,22 +907,22 @@ main {
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
-  
+
             &:hover {
               transform: scale(1.3);
             }
           }
-  
+
           & .editar-perfil-establecimiento {
             bottom: 20px;
             transform: scale(1.2);
           }
-  
+
           & .editar-portada {
             right: 10px;
             top: 10px;
           }
-  
+
           & .descripcion {
             font-weight: bold;
             padding: 12px;
@@ -880,11 +935,11 @@ main {
             align-items: center;
             justify-content: center;
             font-size: clamp(.7em, 1.2vw, 3em);
-  
+
           }
         }
       }
     }
   }
-  
+
 }

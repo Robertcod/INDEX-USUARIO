@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ocultar todas las secciones y mostrar la de inicio por defecto
     ocultarTodasLasSecciones();
-    secciones.inicio.style.display = 'grid';
+    secciones.inicio.style.display = 'flex';
     botones[0].classList.add('active');
 
     // Agregar eventos a los botones de navegación
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Mostrar la sección correspondiente
             if (secciones[nombreSeccion]) {
-                secciones[nombreSeccion].style.display = 'grid';
+                secciones[nombreSeccion].style.display = 'flex';
             }
         });
     });
