@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <section class="portada"
+            style="background-image: url(https://img.freepik.com/foto-gratis/sillas-vintage-peluqueria_155003-10150.jpg?t=st=1741447697~exp=1741451297~hmac=01d30b991787161b9275570c9079ef23f665daf1e5feb8ccd7e2139910268521&w=1060);">
+            <figure class="contenedor-logo">
+                <img src="https://d1yjjnpx0p53s8.cloudfront.net/logotipo-imperio-barberia-vector1.png" alt="Logo"
+                    class="logo">
+                <h2 class="nombre"><button>agendar</button></h2>
+            </figure>
+        </section>
+
+        <section class="carruseles">
+
+            <section> <!-- Carrusel Staff -->
+                <h2 class="titulo">Nuestro Staff</h2>
+                <div class="carrusel-container">
+                    <button id="btn-prev-staff" class="carrusel-btn"> <i class="fa-solid fa-caret-left"></i>
+                    </button>
+                    <div class="lista" id="lista-staff">
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/retrato-mujer-ensenando-lenguaje-senas_23-2148719728.jpg?t=st=1744040549~exp=1744044149~hmac=4277e12edfef552968b7fb9108cabb9dfe41fb623a829e6d093e8fa472dc5eba&w=740"
+                                alt="Staff 1" class="img-servicio">
+                            <h3 class="nombre-servicio">Juan Barber</h3>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/retrato-mujer-ensenando-lenguaje-senas_23-2148719728.jpg?t=st=1744040549~exp=1744044149~hmac=4277e12edfef552968b7fb9108cabb9dfe41fb623a829e6d093e8fa472dc5eba&w=740"
+                                alt="Staff 2" class="img-servicio">
+                            <h3 class="nombre-servicio">Laura Estilista</h3>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/retrato-mujer-ensenando-lenguaje-senas_23-2148719728.jpg?t=st=1744040549~exp=1744044149~hmac=4277e12edfef552968b7fb9108cabb9dfe41fb623a829e6d093e8fa472dc5eba&w=740"
+                                alt="Staff 1" class="img-servicio">
+                            <h3 class="nombre-servicio">Juan Barber</h3>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/retrato-mujer-ensenando-lenguaje-senas_23-2148719728.jpg?t=st=1744040549~exp=1744044149~hmac=4277e12edfef552968b7fb9108cabb9dfe41fb623a829e6d093e8fa472dc5eba&w=740"
+                                alt="Staff 2" class="img-servicio">
+                            <h3 class="nombre-servicio">Laura Estilista</h3>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/retrato-mujer-ensenando-lenguaje-senas_23-2148719728.jpg?t=st=1744040549~exp=1744044149~hmac=4277e12edfef552968b7fb9108cabb9dfe41fb623a829e6d093e8fa472dc5eba&w=740"
+                                alt="Staff 1" class="img-servicio">
+                            <h3 class="nombre-servicio">Juan Barber</h3>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/retrato-mujer-ensenando-lenguaje-senas_23-2148719728.jpg?t=st=1744040549~exp=1744044149~hmac=4277e12edfef552968b7fb9108cabb9dfe41fb623a829e6d093e8fa472dc5eba&w=740"
+                                alt="Staff 2" class="img-servicio">
+                            <h3 class="nombre-servicio">Laura Estilista</h3>
+                        </div>
+                        <!-- Agrega más miembros del staff -->
+                    </div>
+                    <button id="btn-next-staff" class="carrusel-btn"> <i class="fa-solid fa-caret-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <section> <!-- Carrusel Servicios -->
+                <h2 class="titulo">Servicios</h2>
+                <div class="carrusel-container">
+                    <button id="btn-prev-servicios" class="carrusel-btn">⏪</button>
+                    <div class="lista" id="lista-servicios">
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/vista-posterior-mujer-cortando-primer-plano-cabello-su-cliente_23-2148353439.jpg"
+                                alt="Servicio 1" class="img-servicio">
+                            <h3 class="nombre-servicio">Corte de cabello</h3>
+                            <p class="descripcion">Clásico o moderno, como tú quieras.</p>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://img.freepik.com/foto-gratis/vista-posterior-mujer-cortando-primer-plano-cabello-su-cliente_23-2148353439.jpg"
+                                alt="Servicio 2" class="img-servicio">
+                            <h3 class="nombre-servicio">Afeitado</h3>
+                            <p class="descripcion">Con navaja tradicional o máquina.</p>
+                        </div>
+                        <!-- Más servicios -->
+                    </div>
+                    <button id="btn-next-servicios" class="carrusel-btn">⏩</button>
+                </div>
+            </section>
+
+            <section>
+                <!-- Carrusel Productos -->
+                <h2 class="titulo">Productos</h2>
+                <div class="carrusel-container">
+                    <button id="btn-prev-productos" class="carrusel-btn">⏪</button>
+                    <div class="lista" id="lista-productos">
+                        <div class="tarjeta">
+                            <img src="https://copservir.vtexassets.com/arquivos/ids/1566076/CERA-EGO_F.png?v=638787977974670000"
+                                alt="Producto 1" class="img-servicio">
+                            <h3 class="nombre-servicio">Gel Fijador</h3>
+                            <p class="descripcion">Fijación fuerte todo el día.</p>
+                        </div>
+                        <div class="tarjeta">
+                            <img src="https://copservir.vtexassets.com/arquivos/ids/1566076/CERA-EGO_F.png?v=638787977974670000"
+                                alt="Producto 2" class="img-servicio">
+                            <h3 class="nombre-servicio">Aceite para barba</h3>
+                            <p class="descripcion">Nutre y suaviza tu barba.</p>
+                        </div>
+                        <!-- Más productos -->
+                    </div>
+                    <button id="btn-next-productos" class="carrusel-btn">⏩</button>
+                </div>
+            </section>
+
+        </section>
+
+        <section class="comentarios">
+            <h2 class="titulo">Comentarios</h2>
+            <div class="comentarios-listalista">
+                <div class="comentario">
+                    <p class="texto-comentario">Comentario 1.</p>
+                    <p class="autor-comentario">Autor 1</p>
+                </div>
+                <div class="comentario">
+                    <p class="texto-comentario">Comentario 2.</p>
+                    <p class="autor-comentario">Autor 2</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
