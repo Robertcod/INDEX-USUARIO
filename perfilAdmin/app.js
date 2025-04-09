@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const nextBtn = document.getElementById(nextId);
   
       // Busca una tarjeta como ejemplo para sacar el ancho
-      const tarjeta = lista.querySelector('.tarjeta');
+      const tarjeta = lista.querySelector('.carta');
       if (!tarjeta) return; // Si no hay tarjetas, no hace nada
   
       const tarjetaStyle = window.getComputedStyle(tarjeta);
