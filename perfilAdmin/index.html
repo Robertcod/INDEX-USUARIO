@@ -23,26 +23,32 @@
             </div>
             <div class="derecha">
                 <div class="contenido-derecha">
-                    <h2 class="nombre">IMPERIO BARBER</h2>
-                    <h3 class="direccion">CRA 23 #56-96 <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
-                    </h3>
-                    <p class="descripcion">En Imperio Barber más que un corte, vivimos la experiencia. Nuestro espacio
-                        está diseñado para
-                        que te
-                        relajes, disfrutes y salgas con un estilo que hable por ti. Desde cortes clásicos hasta estilos
-                        urbanos modernos, nuestro staff está listo pa’ dejarte como un verdadero rey. ¡Tu imagen es
-                        nuestra
-                        pasión!.</p>
-                    <form action="{{ url('/usuarios/agendar') }}" method="GET">
-                        <button class="boton-agendar">
-                            <div class="icono">
-                                <img width="100" height="100"
-                                    src="https://img.icons8.com/ios-filled/100/FFFFFF/event-accepted-tentatively.png"
-                                    alt="event-accepted-tentatively" />
-                            </div>
-                            <span>AGENDAR</span>
-                        </button>
-                    </form>
+                    <div class="nombre-direccion">
+                        <h2 class="nombre">IMPERIO BARBER</h2>
+                        <h3 class="direccion">CRA 23 #56-96 <i class="fa-solid fa-location-dot"></i>
+                        </h3>
+                    </div>
+                    <div class="descripcion-boton">
+                        <p class="descripcion">En Imperio Barber más que un corte, vivimos la experiencia. Nuestro
+                            espacio
+                            está diseñado para
+                            que te
+                            relajes, disfrutes y salgas con un estilo que hable por ti. Desde cortes clásicos hasta
+                            estilos
+                            urbanos modernos, nuestro staff está listo pa’ dejarte como un verdadero rey. ¡Tu imagen es
+                            nuestra
+                            pasión!.</p>
+                        <form action="{{ url('/usuarios/agendar') }}" method="GET">
+                            <button class="boton-agendar">
+                                <div class="icono">
+                                    <img width="100" height="100"
+                                        src="https://img.icons8.com/ios-filled/100/FFFFFF/event-accepted-tentatively.png"
+                                        alt="event-accepted-tentatively" />
+                                </div>
+                                <span>AGENDAR</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,12 +68,13 @@
                                 <p class="descripcion">Clásico o moderno, como tú quieras.</p>
                             </div>
                         </div>
+
                         <div class="tarjeta tarjeta-servicio">
                             <img src="https://miriam.mx/assets/img/_1200x630_crop_center-center_82_none/Depilaci%C3%B3n-de-ceja-para-hombres.jpg?mtime=1695688258"
                                 alt="Servicio 2" class="img-servicio">
                             <div class="contenido-tarjeta">
-                                <h3 class="nombre-servicio">Afeitado</h3>
-                                <p class="descripcion">Con navaja tradicional o máquina.</p>
+                                <h3 class="nombre-servicio">Perfilado de cejas</h3>
+                                <p class="descripcion">Definición precisa con navaja o máquina, según tu estilo.</p>
                             </div>
 
                         </div>
@@ -83,9 +90,11 @@
                             <img src="https://img.freepik.com/foto-gratis/encantadora-dama-adulta-pelo-corto-ondulado-lila-aretes-redondos-camisa-blanca-sobre-rosa-aislado_197531-19239.jpg?t=st=1744075030~exp=1744078630~hmac=bdb1cce3cc6e6bc77a1c1ddfa968a77d80ba8e6feacdb138341420ad2a4305c4&w=996"
                                 alt="Servicio 2" class="img-servicio">
                             <div class="contenido-tarjeta">
-                                <h3 class="nombre-servicio">Afeitado</h3>
-                                <p class="descripcion">Con navaja tradicional o máquina.</p>
+                                <h3 class="nombre-servicio">Tinte</h3>
+                                <p class="descripcion">Aplicación de tinte para definir el estilo y resaltar la mirada.
+                                </p>
                             </div>
+
                         </div>
 
                     </div>
@@ -158,7 +167,7 @@
                             <figure class="carta-imagen">
                                 <img src="https://www.ruufe.com/cdn/shop/files/egogel3_1e2b67f3-3286-4939-9cf2-541151bf22dd.jpg?v=1740001391"
                                     alt="">
-                                <p class="stock"><i class="fa-solid fa-boxes-stacked" style="color: #ffffff;"></i> 23
+                                <p class="stock"><i class="fa-solid fa-boxes-stacked"></i> 23
                                 </p>
                                 <p class="precio"><span>40.000 COP</span></p>
                             </figure>
@@ -169,51 +178,48 @@
                                 <button>SOLICITAR</button>
                             </div>
                         </div>
-                        <div class="tarjeta  producto">
+                        <div class="tarjeta producto">
                             <figure class="carta-imagen">
-                                <img src="https://www.ruufe.com/cdn/shop/files/egogel3_1e2b67f3-3286-4939-9cf2-541151bf22dd.jpg?v=1740001391"
+                                <img src="https://elmeromacho.co/cdn/shop/files/CeraOssionMateVerde5.jpg?v=1722994802&width=480"
                                     alt="">
-                                <p class="stock"><i class="fa-solid fa-boxes-stacked" style="color: #ffffff;"></i> 23
-                                </p>
-                                <p class="precio"><span>40.000 COP</span></p>
+                                <p class="stock"><i class="fa-solid fa-boxes-stacked"></i> 15</p>
+                                <p class="precio"><span>35.000 COP</span></p>
                             </figure>
                             <div class="contenido-tarjeta">
-                                <h3>Gel EGO</h3>
-                                <p>Fijador de alta resistencia que mantiene tu peinado en su lugar durante todo el día.
-                                </p>
+                                <h3>Cera Mate</h3>
+                                <p>Acabado natural sin brillo para un look definido y moderno.</p>
                                 <button>SOLICITAR</button>
                             </div>
                         </div>
-                        <div class="tarjeta carta producto">
+
+                        <div class="tarjeta producto">
                             <figure class="carta-imagen">
-                                <img src="https://www.ruufe.com/cdn/shop/files/egogel3_1e2b67f3-3286-4939-9cf2-541151bf22dd.jpg?v=1740001391"
+                                <img src="https://www.fusionselvatica.com/cdn/shop/products/ANTICASPA450_50204429-98b2-4fe1-9653-e53832426a91.png?v=1680705514"
                                     alt="">
-                                <p class="stock"><i class="fa-solid fa-boxes-stacked" style="color: #ffffff;"></i> 23
-                                </p>
-                                <p class="precio"><span>40.000 COP</span></p>
+                                <p class="stock"><i class="fa-solid fa-boxes-stacked"></i> 8</p>
+                                <p class="precio"><span>50.000 COP</span></p>
                             </figure>
                             <div class="contenido-tarjeta">
-                                <h3>Gel EGO</h3>
-                                <p>Fijador de alta resistencia que mantiene tu peinado en su lugar durante todo el día.
-                                </p>
+                                <h3>Shampoo Anti-Caspa</h3>
+                                <p>Elimina la caspa y refresca el cuero cabelludo desde el primer uso.</p>
                                 <button>SOLICITAR</button>
                             </div>
                         </div>
-                        <div class="tarjeta carta producto">
+
+                        <div class="tarjeta producto">
                             <figure class="carta-imagen">
-                                <img src="https://www.ruufe.com/cdn/shop/files/egogel3_1e2b67f3-3286-4939-9cf2-541151bf22dd.jpg?v=1740001391"
+                                <img src="https://www.oboticario.com.co/cdn/shop/files/73794-2-MALBEC-BALSAMO-POST-BARBA-CLUB-100G_1500x.jpg?v=1725046774"
                                     alt="">
-                                <p class="stock"><i class="fa-solid fa-boxes-stacked" style="color: #ffffff;"></i> 23
-                                </p>
-                                <p class="precio"><span>40.000 COP</span></p>
+                                <p class="stock"><i class="fa-solid fa-boxes-stacked"></i> 30</p>
+                                <p class="precio"><span>28.000 COP</span></p>
                             </figure>
                             <div class="contenido-tarjeta">
-                                <h3>Gel EGO</h3>
-                                <p>Fijador de alta resistencia que mantiene tu peinado en su lugar durante todo el día.
-                                </p>
+                                <h3>Crema para Barba</h3>
+                                <p>Hidrata, suaviza y moldea tu barba para un look impecable.</p>
                                 <button>SOLICITAR</button>
                             </div>
                         </div>
+
 
 
                     </div>
@@ -224,21 +230,16 @@
         </section>
 
         <section class="comentarios">
-            <h2 class="titulo">Comentarios</h2>
+            <h2 class="titulo">COMENTARIOS</h2>
             <div class="tarjeta-testimonio">
                 <div class="imagen-perfil">
-                    <img src="https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1200&height=810&quality=90&smart=true"
+                    <img src="https://image.ondacero.es/clipping/cmsimages02/2017/03/09/959B78F7-9584-4170-8486-01647BB6B845/98.jpg?crop=640,360,x0,y0&width=1900&height=1069&optimize=high&format=webply"
                         alt="Alejandro Sarasty">
                 </div>
                 <div class="contenido-testimonio">
-                    <h2 class="nombre">ALEJANDRO SARASTY</h2>
-                    <p class="texto-resena">Me encanta mucho esta aplicación, desde que la probé siento que mis citas
-                        son más fáciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.ciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.ciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.ciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.ciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.</p>
+                    <h2 class="nombre">RAUL GONZALES</h2>
+                    <p class="texto-resena">El establecimiento es súper limpio y moderno. El ambiente es relajante y el
+                        personal muy profesional. ¡Siempre salgo feliz y renovado!</p>
                     <div class="calificacion">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -250,33 +251,31 @@
             </div>
             <div class="tarjeta-testimonio">
                 <div class="imagen-perfil">
-                    <img src="https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1200&height=810&quality=90&smart=true"
-                        alt="Alejandro Sarasty">
+                    <img src="https://elcomercio.pe/resizer/v2/473EX5Z3BVEIJOZOU2JCAPMNRU.jpg?auth=eef104e99ffd527d30d9015d2b24d71fe41b94e5116407017b5a431d0490321b&width=1200&height=810&quality=90&smart=true"
+                        alt="Laura Gómez">
                 </div>
                 <div class="contenido-testimonio">
-                    <h2 class="nombre">ALEJANDRO SARASTY</h2>
-                    <p class="texto-resena">Me encanta mucho esta aplicación, desde que la probé siento que mis citas
-                        son más fáciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.</p>
+                    <h2 class="nombre">LAURA GÓMEZ</h2>
+                    <p class="texto-resena">Increíble servicio. Siempre encuentro disponibilidad y el proceso es súper
+                        rápido y sencillo.</p>
                     <div class="calificacion">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
             </div>
+
             <div class="tarjeta-testimonio">
                 <div class="imagen-perfil">
-                    <img src="https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1200&height=810&quality=90&smart=true"
-                        alt="Alejandro Sarasty">
+                    <img src="https://www.biografia.de/wp-content/uploads/La-Cobra.webp" alt="Carlos Méndez">
                 </div>
                 <div class="contenido-testimonio">
-                    <h2 class="nombre">ALEJANDRO SARASTY</h2>
-                    <p class="texto-resena">Me encanta mucho esta aplicación, desde que la probé siento que mis citas
-                        son más fáciles de agendarMe encanta mucho esta aplicación, desde que la probé siento que mis
-                        citas son más fáciles de agendar.</p>
+                    <h2 class="nombre">CARLOS MÉNDEZ</h2>
+                    <p class="texto-resena">Gracias a esta app, agendar mis servicios favoritos es cuestión de segundos.
+                        ¡Muy recomendada!</p>
                     <div class="calificacion">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -286,6 +285,7 @@
                     </div>
                 </div>
             </div>
+
 
 
         </section>
